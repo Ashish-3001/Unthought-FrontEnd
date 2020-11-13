@@ -1,0 +1,7 @@
+{
+  "name": "Unthought-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

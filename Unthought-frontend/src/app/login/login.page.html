@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" class="ion-slides">
+    <ion-slide>
+      <h1>Slide 1 welcome slide </h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 2 for Intro, rules and regulations </h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 3 for login </h1><br><br>
+      <div>
+        <ion-button  expand="block" [routerLink]="['/user/home']" > sign in</ion-button><br><br>
+        <ion-button color="success" expand="block" [routerLink]="['/sign-up-as']" > sign up</ion-button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,8 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <ion-slides pager="true" class="ion-slides">
@@ -13,10 +16,34 @@
       <h1>Slide 2 for Intro, rules and regulations </h1>
     </ion-slide>
     <ion-slide>
-      <h1>Slide 3 for login </h1><br><br>
       <div>
-        <ion-button  expand="block" [routerLink]="['/user/home']" > sign in</ion-button><br><br>
-        <ion-button color="success" expand="block" [routerLink]="['/sign-up-as']" > sign up</ion-button>
+        <form #form="ngForm" (ngSubmit)="login(form)">
+          <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div text-center>
+                  <h2 class="login">Login</h2>
+                </div>
+                <br><br><br>
+                <div padding>
+                  <ion-item class="item">
+                    <ion-input name="username" placeholder="your_username" ngModel required></ion-input>
+                  </ion-item>
+                  <ion-item class="item">
+                    <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                  </ion-item>
+                </div>
+                <br><br>
+                <div padding>
+                  <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block" >Login</ion-button>
+                  <br><br><br><br>
+                  <h3 class="login"> Don't have a account Sign up Fast !!</h3><br>
+                  <ion-button size="large" expand="block" [routerLink]="['/sign-up-as']">Sign Up</ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
       </div>
     </ion-slide>
   </ion-slides>

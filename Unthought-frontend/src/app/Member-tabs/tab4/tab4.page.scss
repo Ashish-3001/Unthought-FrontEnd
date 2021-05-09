@@ -1,0 +1,68 @@
+.tab-bar {
+    --background: black;
+    --border-color: white;
+}
+
+.heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-style: initial;  
+}
+
+.notifications-icon{
+    color: red;
+}
+
+.content{
+    background-color: black;
+
+}
+
+.search-chip{
+    color: white;
+    background: red;
+}
+
+.SEARCH-For {
+    color: red;
+    margin: 0px;
+}
+
+.search {
+    background-color: black;
+    color: red;
+    font-size: 15px;
+    --icon-color: red;
+    --placeholder-font-weight: 700;
+    --placeholder-opacity: 1;
+    --box-shadow: 0.5;
+}
+
+.like-save-saerch {
+    color: red;
+}
+
+.post_header {
+    height: 75px;
+}
+
+.post_mode {
+    height: 75px;
+    color: gray;
+    text-align: right;
+    padding-top: 55px;
+    padding-right: 15px;
+    font-size: medium;
+}
+
+.post_content {
+    padding-inline: 3px;
+    padding-block: 7px;
+}
+
+.post_img {
+    object-fit: fill;
+    width: 100%;
+    height: 200px;
+}

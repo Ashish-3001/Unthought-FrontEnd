@@ -1,0 +1,74 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10" offset="1"><br>
+          <ion-slides pager="true" class="post_slides">
+            <ion-slide *ngIf='this.eventImage1 == "http://127.0.0.1:8000/media/Images/None/No0img.jpg"'>
+              <ion-icon name="bulb-outline" class="img"></ion-icon>
+            </ion-slide>
+            <ion-slide *ngIf='this.eventImage1 != "http://127.0.0.1:8000/media/Images/None/No0img.jpg"'>
+              <ion-img [src]='this.eventImage1' class="img" ></ion-img>
+            </ion-slide>
+            <ion-slide *ngIf='this.eventImage2 != "http://127.0.0.1:8000/media/Images/None/No0img.jpg"' >
+              <ion-img [src]='this.eventImage2' class="img" ></ion-img>
+            </ion-slide>
+            <ion-slide *ngIf='this.eventImage3 != "http://127.0.0.1:8000/media/Images/None/No0img.jpg"' >
+              <ion-img [src]='this.eventImage2' class="img" ></ion-img>
+            </ion-slide><br>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="details_card">
+            <ion-card-header>
+              <ion-card-title class="details_card_title">
+                {{ this.eventDetails.event_name }}
+              </ion-card-title>
+              <ion-card-subtitle>
+                {{ this.eventDetails.categories }}
+              </ion-card-subtitle>
+              <ion-card-content class="details_contents">
+                <b>About Event:</b> {{ this.eventDetails.desc }} <br><br>
+                <b>Event Mode:</b> {{ this.eventDetails.mode }} <br>
+                <b>Event venue:</b> {{ this.eventDetails.venue }} <br>
+                <b>Event date:</b> {{ this.eventDetails.date }} <br>
+                <b>Event time:</b> {{ this.eventDetails.time }} <br>
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card>
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Contact Details</ion-label>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>1) <b>{{ this.eventDetails.contact_no }}</b></ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>2) <b>{{ this.eventDetails.email }}</b></ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>3) <b>{{ this.eventDetails.website }}</b></ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

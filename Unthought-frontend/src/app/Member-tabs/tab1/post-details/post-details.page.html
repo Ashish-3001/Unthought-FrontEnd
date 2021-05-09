@@ -1,0 +1,128 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <ion-grid>
+      
+      <ion-row>
+        <ion-col size="10" offset="1"><br>
+          <ion-slides pager="true" class="post_slides">
+            <ion-slide *ngIf='this.postImage1 == "http://127.0.0.1:8000/media/Images/None/No0img.jpg"'>
+              <ion-icon name="bulb-outline" class="img"></ion-icon>
+            </ion-slide>
+            <ion-slide *ngIf='this.postImage1 != "http://127.0.0.1:8000/media/Images/None/No0img.jpg"'>
+              <ion-img [src]='this.postImage1' class="img" ></ion-img>
+            </ion-slide>
+            <ion-slide *ngIf='this.postImage2 != "http://127.0.0.1:8000/media/Images/None/No0img.jpg"' >
+              <ion-img [src]='this.postImage2' class="img" ></ion-img>
+            </ion-slide>
+            <ion-slide *ngIf='this.postImage3 != "http://127.0.0.1:8000/media/Images/None/No0img.jpg"' >
+              <ion-img [src]='this.postImage2' class="img" ></ion-img>
+            </ion-slide><br>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="details_card">
+            <ion-card-header>
+              <ion-card-title class="details_card_title">
+                {{ this.postDetails.title_of_post }}
+              </ion-card-title>
+              <ion-row>
+                <ion-col size="6" class="details_card_subtitle">
+                  <ion-card-subtitle>
+                    <b>Likes: {{ this.postDetails.no_of_links }}</b>
+                  </ion-card-subtitle>
+                </ion-col>
+                <ion-col size="6" class="details_card_subtitle_saved">
+                  <ion-card-subtitle>
+                  <b>Saved: {{ this.postDetails.no_of_saved }}</b>
+                  </ion-card-subtitle>
+                </ion-col>
+              </ion-row>
+            </ion-card-header>
+            <ion-card-content class="details_contents">
+            <b>About Project:</b> {{ this.postDetails.long_desc }} <br><br>
+            <b>Goal of the Project:</b> {{ this.postDetails.goal_of_project }} <br>
+            <b>Work Done till now:</b> {{ this.postDetails.workdone }}
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Looking For</ion-label>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>1) <b>{{ this.postDetails.requirement1 }}</b></ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>2) <b>{{ this.postDetails.requirement2 }}</b></ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>3) <b>{{ this.postDetails.requirement3 }}</b></ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>4) <b>{{ this.postDetails.requirement4 }}</b></ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+
+          <ion-card>
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Project Members</ion-label>
+              </ion-list-header>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img [src]="this.postMembersDp[this.postDetails.admin_id]">
+                </ion-avatar>
+                <ion-label>
+                  Admin:<b>{{ this.postDetails.admin_name }}</b>
+                </ion-label>
+              </ion-item>
+              <ion-item *ngFor = " let user of this.postMembers let i = index">
+                <ion-avatar slot="start">
+                  <img [src]="this.postMembersDp[user.user_id]">
+                </ion-avatar>
+                <ion-label>
+                  Member:<b>{{ user.user_name }}</b>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+
+          <ion-card>
+            <ion-row>
+              <ion-col size="2.2">
+                <ion-icon  (click)='like(this.postDetails.id, this.postDetails.title_of_post)' *ngIf='this.liked == false' name="thumbs-up-outline" size ="large"></ion-icon>
+                <ion-icon  (click)='dislike(this.postDetails.id)' *ngIf='this.liked == true' name="thumbs-up" size ="large" class="like-save-saerch"></ion-icon>
+              </ion-col>
+              <ion-col size="2.2">
+                <ion-icon (click)='Saved(this.postDetails.id, this.postDetails.title_of_post)' *ngIf='this.saved == false' name="bookmark-outline" size ="large" ></ion-icon>
+                <ion-icon (click)='unsaved(this.postDetails.id)' *ngIf='this.saved== true' name="bookmark" size ="large" class="like-save-saerch"></ion-icon>
+              </ion-col>
+              <ion-col size="2.2">
+                <ion-icon name="share-social-outline" size ="large" ></ion-icon>
+              </ion-col>
+              <ion-col size="5">
+                <ion-button class="read_more" color="dark" shape="round" size="small">Request Join</ion-button> 
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

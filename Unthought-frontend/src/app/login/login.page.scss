@@ -7,4 +7,27 @@
 }
 .swiper-slide {
     display: block;
+    background-color: black;
   }
+
+
+.tab-bar {
+    --background: black;
+    --border-color: white;
+}
+
+.heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-style: initial;  
+  }
+
+.item{
+    --background: black;
+    --color: #fff;
+}
+
+.login{
+    color: white;
+}

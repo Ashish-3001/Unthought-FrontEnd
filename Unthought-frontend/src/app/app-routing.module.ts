@@ -3,7 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ' ',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'user',
     loadChildren: () => import('./Member-tabs/tabs.module').then(m => m.MemberTabsPageModule)
   },
   {
@@ -29,7 +33,11 @@ const routes: Routes = [
   {
     path: 'mentor-tabs',
     loadChildren: () => import('./mentor-tabs/mentor-tabs.module').then( m => m.MentorTabsPageModule)
-  }
+  },
+  {
+    path: 'search-bar',
+    loadChildren: () => import('./search-bar/search-bar.module').then( m => m.SearchBarPageModule)
+  },
 ];
 @NgModule({
   imports: [

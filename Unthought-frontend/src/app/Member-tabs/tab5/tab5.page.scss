@@ -1,0 +1,59 @@
+.tab-bar {
+    --background: black;
+    --border-color: white;
+}
+
+.heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-style: initial;  
+}
+
+.notifications-icon{
+    color: red;
+}
+
+.content{
+    background-color: black;
+
+}
+
+.img {
+    padding: 4px;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-fit: fill;
+    border-width: 4px;
+    border-color: white;
+}
+
+.details_card_title {
+    text-align: center;
+}
+
+.details_card_subtitle{
+    display: inline-block;
+}
+
+.details_card_subtitle_saved {
+    text-align: right;
+}
+
+.details_card {
+    color: black;
+}
+
+.personal_details {
+    color: black;
+}
+
+.personal_details_title {
+    text-align: center;
+}
+
+.Setting_title {
+    text-align: left;
+    font-size: 20px;
+}

@@ -39,12 +39,16 @@ const routes: Routes = [
     loadChildren: () => import('./search-bar/search-bar.module').then( m => m.SearchBarPageModule)
   },
   {
-    path: 'member-sign-up',
-    loadChildren: () => import('./member-sign-up/member-sign-up.module').then( m => m.MemberSignUpPageModule)
+    path: 'about-app/:type',
+    loadChildren: () => import('./about-app/about-app.module').then( m => m.AboutAppPageModule)
   },
   {
-    path: 'mentor-sign-up',
-    loadChildren: () => import('./mentor-sign-up/mentor-sign-up.module').then( m => m.MentorSignUpPageModule)
+    path: 'help/:type',
+    loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
+  },
+  {
+    path: 't-and-c/:type',
+    loadChildren: () => import('./t-and-c/t-and-c.module').then( m => m.TAndCPageModule)
   },
 ];
 @NgModule({

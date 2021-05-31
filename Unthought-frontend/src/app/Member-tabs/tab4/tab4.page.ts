@@ -49,6 +49,6 @@ export class MemberPostPage implements OnInit {
 
   changePage(event_id:any) {
     console.log(event_id);
-    this.router.navigate([`/user/events/${event_id}`])
+    this.router.navigate([`/user/eventss/${event_id}`])
   }
 }

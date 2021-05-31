@@ -1,4 +1,75 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Active Zone"></app-explore-container>
+  
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col offset="1" size="5">
+        <ion-chip class="chip">
+          <ion-icon name="people"></ion-icon>
+          <ion-label>Groups</ion-label>
+        </ion-chip>
+      </ion-col>
+      <ion-col offset="1" size="5">
+        <ion-chip class="chip-direct" routerLink="direct-text">
+          <ion-icon name="chatbox-ellipses"></ion-icon>
+          <ion-label>Direct</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+
+        <div class="ion-text-center" class="heading" *ngIf="this.check_post == true">
+          <h3> Your Projects </h3>
+        </div>
+
+        <ion-card *ngFor = " let user of this.post_image let i = index" (click)="changePage(user.fields.post_id)" class="card">
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="3">
+                <ion-img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp" class="img"></ion-img>
+              </ion-col>
+              <ion-col size="9">
+                <div class="ion-margin" class="ion-padding" class="div">
+                  {{ user.fields.post_title }}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+        <div class="ion-text-center" class="heading" *ngIf="this.other_check_post == true">
+          <h3> Colabration </h3>
+        </div>
+
+        <ion-card *ngFor = " let user of this.other_post_image let i = index" (click)="changePage(user.fields.post_id)" class="card">
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="3">
+                <ion-img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp" class="img"></ion-img>
+              </ion-col>
+              <ion-col size="9">
+                <div class="ion-margin" class="ion-padding" class="div">
+                  {{ user.fields.post_title }}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
 </ion-content>

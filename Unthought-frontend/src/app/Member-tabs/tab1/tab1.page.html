@@ -8,165 +8,165 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="content">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-chip *ngIf='this.searchToggle == false' (click)="search(true)">
-            <ion-icon name="search-outline" class="like-save-saerch" ></ion-icon>
-            <ion-text class="SEARCH-For"> <h4> SEARCH </h4> </ion-text>
-          </ion-chip>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-chip *ngIf='this.searchToggle == false' (click)="search(true)">
+          <ion-icon name="search-outline" class="like-save-saerch" ></ion-icon>
+          <ion-text class="SEARCH-For"> <h4> SEARCH </h4> </ion-text>
+        </ion-chip>
+        <ion-row>
+          <ion-col offset=10>  
+            <ion-chip *ngIf='this.searchToggle == true' (click)="search(false)">
+              <ion-icon name="close-outline" class="like-save-saerch" size=large ></ion-icon>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+        <div *ngIf='this.searchToggle == true'>
           <ion-row>
-            <ion-col offset=10>  
-              <ion-chip *ngIf='this.searchToggle == true' (click)="search(false)">
-                <ion-icon name="close-outline" class="like-save-saerch" size=large ></ion-icon>
+            <ion-col offset=4>
+              <ion-text class="SEARCH-For"> <h3 class="SEARCH-For">Seacrh For</h3> </ion-text>
+            </ion-col> 
+          </ion-row>
+          <ion-row>
+            <ion-col offset=2>
+              <ion-chip class="search-chip" >
+                Projects
+              </ion-chip>
+              <ion-chip class="search-chip" >
+                User
+              </ion-chip><ion-chip class="search-chip" >
+                Mentors
               </ion-chip>
             </ion-col>
           </ion-row>
-          <div *ngIf='this.searchToggle == true'>
-            <ion-row>
-              <ion-col offset=4>
-                <ion-text class="SEARCH-For"> <h3 class="SEARCH-For">Seacrh For</h3> </ion-text>
-              </ion-col> 
-            </ion-row>
-            <ion-row>
-              <ion-col offset=2>
-                <ion-chip class="search-chip" >
-                  Projects
-                </ion-chip>
-                <ion-chip class="search-chip" >
-                  User
-                </ion-chip><ion-chip class="search-chip" >
-                  Mentors
-                </ion-chip>
+        </div>
+        <ion-text class="trending"> <h3>Trending Project</h3> </ion-text>
+        <ion-card class="card">
+          <ion-slides pager="true" class="slides">
+            <ion-slide>
+              <ion-col size="12">
+                <ion-icon name="person-outline" class="img"></ion-icon> 
+                <ion-row>
+                  <ion-text class="box">
+                    que skip
+                  </ion-text>
+                </ion-row>
               </ion-col>
-            </ion-row>
-          </div>
-          <ion-text class="trending"> <h3>Trending Project</h3> </ion-text>
-          <ion-card class="card">
-            <ion-slides pager="true" class="slides">
-              <ion-slide>
-                <ion-col size="12">
-                  <ion-icon name="person-outline" class="img"></ion-icon> 
-                  <ion-row>
-                    <ion-text class="box">
-                      que skip
-                    </ion-text>
-                  </ion-row>
-                </ion-col>
-              </ion-slide>
-              <ion-slide>
-                <ion-col size="12">
-                  <ion-icon name="person-outline" class="img"></ion-icon> 
-                  <ion-row>
-                    <ion-text class="box">
-                      <h5> oafnvon </h5>
-                    </ion-text>
-                  </ion-row>
-                </ion-col>
-              </ion-slide>
-              <ion-slide>
-                <ion-col size="12">
-                  <ion-icon name="person-outline" class="img"></ion-icon> 
-                  <ion-row>
-                    <ion-text class="box">
-                      <h5> que skip </h5>
-                    </ion-text>
-                  </ion-row>
-                </ion-col>
-              </ion-slide>
-              <ion-slide>
-                <ion-col size="12">
-                  <ion-icon name="person-outline" class="img"></ion-icon> 
-                  <ion-row>
-                    <ion-text class="box">
-                      <h5> qavina </h5>
-                    </ion-text>
-                  </ion-row>
-                </ion-col>
-              </ion-slide>
-              <ion-slide>
-                <ion-col size="12">
-                  <ion-icon name="person-outline" class="img"></ion-icon> 
-                  <ion-row>
-                    <ion-text class="box">
-                      <h5> unthought </h5>
-                    </ion-text>
-                  </ion-row>
-                </ion-col>
-              </ion-slide>
-            </ion-slides>
-          </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-col size="12">
+                <ion-icon name="person-outline" class="img"></ion-icon> 
+                <ion-row>
+                  <ion-text class="box">
+                    <h5> oafnvon </h5>
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-slide>
+            <ion-slide>
+              <ion-col size="12">
+                <ion-icon name="person-outline" class="img"></ion-icon> 
+                <ion-row>
+                  <ion-text class="box">
+                    <h5> que skip </h5>
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-slide>
+            <ion-slide>
+              <ion-col size="12">
+                <ion-icon name="person-outline" class="img"></ion-icon> 
+                <ion-row>
+                  <ion-text class="box">
+                    <h5> qavina </h5>
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-slide>
+            <ion-slide>
+              <ion-col size="12">
+                <ion-icon name="person-outline" class="img"></ion-icon> 
+                <ion-row>
+                  <ion-text class="box">
+                    <h5> unthought </h5>
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
 
-          <ion-card *ngFor = " let user of this.sortedData; let i = index" class="post-card">
-            <ion-row >
-              <ion-col size="3" class="post_header">
-                <ion-img *ngIf='this.dp_image_dict[user.fields.admin_id]' [src]='this.dp_image_dict[user.fields.admin_id]' class="img" ></ion-img>
-              </ion-col>
-              <ion-col size="9" class="post_header">
-                <ion-card-header>
-                  <ion-card-title>
-                    {{ user.fields.admin_name }}
-                  </ion-card-title>
-                  <ion-card-subtitle>
-                    {{ user.fields.admin_designation }}
-                  </ion-card-subtitle>
-                </ion-card-header>
+        <ion-card *ngFor = " let user of this.sortedData; let i = index" class="post-card">
+          <ion-row >
+            <ion-col size="3" class="post_header">
+              <ion-img *ngIf='this.dp_image_dict[user.fields.admin_id]' [src]='this.dp_image_dict[user.fields.admin_id]' class="img" ></ion-img>
+            </ion-col>
+            <ion-col size="9" class="post_header">
+              <ion-card-header>
+                <ion-card-title>
+                  {{ user.fields.admin_name }}
+                </ion-card-title>
+                <ion-card-subtitle>
+                  {{ user.fields.admin_designation }}
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-col>
+          </ion-row>
+          <ion-card-content class="post_content">
+            <ion-row>
+              <ion-col>
+                <ion-text class="post_title"> <u><b> Project Title</b></u>: {{ user.fields.title_of_post }}</ion-text> 
               </ion-col>
             </ion-row>
-            <ion-card-content class="post_content">
-              <ion-row>
-                <ion-col>
-                  <ion-text class="post_title"> <u><b> Project Title</b></u>: {{ user.fields.title_of_post }}</ion-text> 
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-text class="post_desc"> <u><b> About</b></u>: {{ user.fields.short_desc }} </ion-text>
-                </ion-col>
-              </ion-row>
-              <ion-row class="post_img_row">
-                <ion-col>
-                  <ion-img  [src]='this.image_dict[user.pk]' class="post_img" ></ion-img>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col size="2.5">
-                  <ion-icon  (click)='like(user.pk, user.fields.title_of_post)' *ngIf='this.liked_post.includes(user.pk) == false' name="thumbs-up-outline" size ="large"></ion-icon>
-                  <ion-icon  (click)='dislike(user.pk)' *ngIf='this.liked_post.includes(user.pk) == true' name="thumbs-up" size ="large" class="like-save-saerch"></ion-icon>
-                </ion-col>
-                <ion-col size="2.5">
-                  <ion-icon (click)='saved(user.pk, user.fields.title_of_post)' *ngIf='this.saved_post.includes(user.pk) == false' name="bookmark-outline" size ="large" ></ion-icon>
-                  <ion-icon (click)='unsaved(user.pk)' *ngIf='this.saved_post.includes(user.pk) == true' name="bookmark" size ="large" class="like-save-saerch"></ion-icon>
-                </ion-col>
-                <ion-col size="2.5">
-                  <ion-icon name="share-social-outline" size ="large" ></ion-icon>
-                </ion-col>
-                <ion-col size="4.5">
-                  <ion-row>
-                    <ion-col size="8">
-                      <ion-button [routerLink] = "['./', user.pk]" class="read_more" color="dark" shape="round" size="small">read more</ion-button> 
-                    </ion-col>
-                  </ion-row>
-                </ion-col>
-              </ion-row>
-            </ion-card-content>
-          </ion-card>
+            <ion-row>
+              <ion-col>
+                <ion-text class="post_desc"> <u><b> About</b></u>: {{ user.fields.short_desc }} </ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="post_img_row">
+              <ion-col>
+                <ion-img  [src]='this.image_dict[user.pk]' class="post_img" ></ion-img>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2.5">
+                <ion-icon  (click)='like(user.pk, user.fields.title_of_post)' *ngIf='this.liked_post.includes(user.pk) == false' name="thumbs-up-outline" size ="large"></ion-icon>
+                <ion-icon  (click)='dislike(user.pk)' *ngIf='this.liked_post.includes(user.pk) == true' name="thumbs-up" size ="large" class="like-save-saerch"></ion-icon>
+              </ion-col>
+              <ion-col size="2.5">
+                <ion-icon (click)='saved(user.pk, user.fields.title_of_post)' *ngIf='this.saved_post.includes(user.pk) == false' name="bookmark-outline" size ="large" ></ion-icon>
+                <ion-icon (click)='unsaved(user.pk)' *ngIf='this.saved_post.includes(user.pk) == true' name="bookmark" size ="large" class="like-save-saerch"></ion-icon>
+              </ion-col>
+              <ion-col size="2.5">
+                <ion-icon name="share-social-outline" size ="large" ></ion-icon>
+              </ion-col>
+              <ion-col size="4.5">
+                <ion-row>
+                  <ion-col size="8">
+                    <ion-button [routerLink] = "['/user/homee/', user.pk]" class="read_more" color="dark" shape="round" size="small">read more</ion-button> 
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
 
-          <ion-text class="interested"><h3>People you might interested in</h3></ion-text>
-          <div class="ppl">
-            <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-              <ion-slide *ngFor="let user of this.instrested_people; let i = index" style="width: 175px; height: 250px; border: 2px solid #f8f8f8">
-                <ion-col>
-                  <ion-label class="instrested_people_name"><b>{{ user.fields.Member_name }}</b></ion-label>
-                  <ion-list class="instrested_people_des">{{ user.fields.pri_specification_submain }} and {{ user.fields.sec_specification_submain }}</ion-list>
-                  <ion-img style="pointer-events:none" [src]='this.instrested_people_img_dict[user.pk]' class="instrested_people_img"></ion-img>
-                </ion-col>
-              </ion-slide>
-            </ion-slides>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>  
-  </div>
+        <ion-text class="interested"><h3>People you might interested in</h3></ion-text>
+        <div class="ppl">
+          <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+            <ion-slide *ngFor="let user of this.instrested_people; let i = index" style="width: 175px; height: 250px; border: 2px solid #f8f8f8">
+              <ion-col>
+                <ion-label class="instrested_people_name"><b>{{ user.fields.Member_name }}</b></ion-label>
+                <ion-list class="instrested_people_des">{{ user.fields.pri_specification_submain }} and {{ user.fields.sec_specification_submain }}</ion-list>
+                <ion-img style="pointer-events:none" [src]='this.instrested_people_img_dict[user.pk]' class="instrested_people_img"></ion-img>
+              </ion-col>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+
 </ion-content>

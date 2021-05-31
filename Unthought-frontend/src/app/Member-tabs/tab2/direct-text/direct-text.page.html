@@ -1,0 +1,36 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" class="list">
+    <ion-list-header class="list-header">
+      <ion-label>Direct Chats</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor = " let user of this.chatMembers let i = index"  class="item" (click)="changePage(user.pk)">
+      <ion-avatar slot="start" *ngIf='user.fields.member_id_1 == this.member_id' class="img">
+        <img [src]="this.chatMembersDp[user.fields.member_id_2]">
+      </ion-avatar>
+      <ion-avatar slot="start" *ngIf='user.fields.member_id_2 == this.member_id' class="img">
+        <img [src]="this.chatMembersDp[user.fields.member_id_1]">
+      </ion-avatar>
+      <ion-label *ngIf='user.fields.member_id_1 == this.member_id' class="name">
+        <b>{{ user.fields.member_name_2 }}</b> <br>
+        <ion-text *ngIf='user.fields.member_1_seen == false' class="last_seen"> <b>{{ user.fields.last_message }}</b> </ion-text>
+        <ion-text *ngIf='user.fields.member_1_seen == true'> {{ user.fields.last_message }} </ion-text>
+      </ion-label>
+      <ion-label *ngIf='user.fields.member_id_2 == this.member_id' class="name">
+        <b>{{ user.fields.member_name_1 }}</b> <br>
+        <ion-text *ngIf='user.fields.member_2_seen == false' class="last_seen"> <b>{{ user.fields.last_message }}</b> </ion-text>
+        <ion-text *ngIf='user.fields.member_2_seen == true'> {{ user.fields.last_message }} </ion-text>
+      </ion-label>
+
+      <ion-icon name="caret-forward" color="danger"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

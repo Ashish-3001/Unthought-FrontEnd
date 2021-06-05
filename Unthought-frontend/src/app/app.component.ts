@@ -25,6 +25,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    //this.authService.check();
+    this.authService.check();
   }
 }

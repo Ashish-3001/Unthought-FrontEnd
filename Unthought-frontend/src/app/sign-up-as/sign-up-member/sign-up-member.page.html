@@ -4,6 +4,97 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="presentAlterConfirm(form)">
+  <ion-grid>
+     <ion-row>
+        <ion-col size-md="6" offset-med="6">
+          <div class="req">*Required</div>
+        </ion-col>
+     </ion-row>
+     <ion-row>
+        <ion-col size-md="6" offset-med="6">
+          <ion-item>
+             <ion-label position="floating">Member Name*</ion-label>
+             <ion-input type = 'text' ngModel name ="Mname" required #MnameCtrl="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!MnameCtrl.valid && Mname.touched" lines="none">
+            <div class="warn"> Please Enter Your Name</div>
+          </ion-item>
+        </ion-col>
+     </ion-row>
+     <ion-row>
+        <ion-col size-md="6" offset-md="3">
+       <ion-item>
+         <ion-label>Gender:*</ion-label>
+         <ion-select interface="popover"ngModel name ="gender" required #genderCtrl="ngModel">
+           <ion-select-option value="M">Male</ion-select-option>
+           <ion-select-option value="F">Female</ion-select-option>
+           <ion-select-option value="O">Others</ion-select-option>
+         </ion-select>
+       </ion-item> 
+       <ion-item *ngIf="!genderCtrl.valid && genderCtrl.touched" lines="none">
+         <div class="warn">  Please Enter Your Gender</div>
+        </ion-item>
+     </ion-col>
+   </ion-row>
+   <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-item>
+        <ion-label position="floating">Date of Birth*</ion-label>
+        <ion-input type = 'text' ngModel name ="dob" required #dobCtrl="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!dobCtrl.valid && dobCtrl.touched" lines="none">
+        <div class="warn">Please Enter Your Date Of Birth</div>
+      </ion-item>
+    </ion-col>
+   </ion-row>
+   <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-item>
+          <ion-label position="floating">Phone Number*</ion-label>
+          <ion-input type = 'text' inputmode="numeric" ngModel name ="phonenumber" required maxlength="10" minlength="10" #phonenumberCtrl="ngModel" ></ion-input>
+       </ion-item>
+        <ion-item *ngIf="!phonenumberCtrl.valid && phonenumberCtrl.touched" lines="none">
+          <div class="warn">  Please Enter Valid Phone Number</div>
+        </ion-item>  
+     </ion-col>
+   </ion-row>
+   <ion-row>
+     <ion-col size-md="6" offset-md="3">
+       <ion-item>
+         <ion-label position="floating">Email Address*</ion-label>
+         <ion-input type = 'text' ngModel name ="email" required #emailCtrl="ngModel"></ion-input>
+       </ion-item>
+       <ion-item *ngIf="!emailCtrl.valid && emailCtrl.touched" lines="none">
+        <div class="warn">  Please Enter Email Address</div>
+      </ion-item>
+     </ion-col>
+   </ion-row>
+   <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-item>
+        <ion-label position="floating">College Name*</ion-label>
+        <ion-input type = 'text' ngModel name ="college" required #collegeCtrl="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!collegeCtrl.valid && collegeCtrl.touched" lines="none">
+       <div class="warn">  Please Enter college Name</div>
+     </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-item>
+        <ion-label position="floating">Course*</ion-label>
+        <ion-input type = 'text' ngModel name ="course" required #courseCtrl="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!courseCtrl.valid && courseCtrl.touched" lines="none">
+       <div class="warn">  Please Enter college Name</div>
+     </ion-item>
+    </ion-col>
+  </ion-row>
+  
 
+  </ion-grid>
+  </form>
 </ion-content>

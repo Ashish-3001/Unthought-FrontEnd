@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -25,6 +25,7 @@ export class PostDetailsPage implements OnInit {
     private http: HttpClient,
     private auth: AuthenticationService,
     private acitivatedRoute: ActivatedRoute,
+    private router: Router,
     ) { }
 
   ngOnInit() {
@@ -152,4 +153,8 @@ export class PostDetailsPage implements OnInit {
     });
   }
 
+  
+  changePage(member_id) {
+    this.router.navigate([`/user/profile/${member_id}`])
+  }
 }

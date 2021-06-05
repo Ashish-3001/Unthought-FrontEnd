@@ -1,0 +1,46 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="content">
+    <ion-refresher (ionRefresh)="onPullOldMessages($event)" slot="fixed">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-row *ngFor="let message of this.message">
+      <ion-col size="9" *ngIf="message.member_name != this.user_data[0].Member_name" class="message other-message">
+        <b>{{ message.member_name }} </b><br>
+        <span> {{ message.message }}</span>
+        <div class="time" ><br>
+        {{ message.createdAt | date:'short' }} </div>
+      </ion-col>
+      <ion-col offset="3" size="9" *ngIf="message.member_name == this.user_data[0].Member_name" class="message my-message">
+        <b>{{ message.member_name }} </b><br>
+        <span> {{ message.message }}</span>
+        <div class="time" ><br>
+        {{ message.createdAt | date:'short' }} </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="dark"> 
+    <ion-row>
+      <ion-col size="10">
+        <textarea autosize maxRows="3" class="message-input" [(ngModel)] = "newmsg">
+        </textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="newmsg == ''" class="msg-button" (click)="sendback()">
+          <ion-icon name="send-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

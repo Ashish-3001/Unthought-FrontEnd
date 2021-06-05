@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+
 
 @Component({
   selector: 'app-tab5',
@@ -22,10 +24,11 @@ export class MemberProfilePage implements OnInit {
   other_post_image:any;
 
   constructor(
-    
     private http: HttpClient,
     private auth: AuthenticationService,
     private acitivatedRoute: ActivatedRoute,
+    private router: Router,
+    public actionSheetController: ActionSheetController,
     ) { }
 
   ngOnInit() {
@@ -56,22 +59,22 @@ export class MemberProfilePage implements OnInit {
                 console.log(this.post_image);
               });              
             }
-            this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=&user_id=${this.member_id}&active=`).subscribe((data:any = [{}]) => {
-                if(data.length>0) {
-                  this.other_check_post = true;
-                  for(var i = 0; i<data.length; i++) {
-                    this.other_post_ids += data[i].post_id;
-                    this.other_post_ids += ',';
-                  }
-                  var postdata = {
-                    sorted_post_id: this.other_post_ids,
-                  }
-                  this.http.post('http://127.0.0.1:8000/sorted-posts-img/', postdata ).subscribe((data) => {
-                    this.other_post_image = data;
-                    console.log(this.other_post_image); 
-                  });
+          this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=&user_id=${this.member_id}&active=`).subscribe((data:any = [{}]) => {
+              if(data.length>0) {
+                this.other_check_post = true;
+                for(var i = 0; i<data.length; i++) {
+                  this.other_post_ids += data[i].post_id;
+                  this.other_post_ids += ',';
                 }
-              });
+                var postdata = {
+                  sorted_post_id: this.other_post_ids,
+                }
+                this.http.post('http://127.0.0.1:8000/sorted-posts-img/', postdata ).subscribe((data) => {
+                  this.other_post_image = data;
+                  console.log(this.other_post_image); 
+                });
+              }
+            });
           });
         });
       }
@@ -125,7 +128,74 @@ export class MemberProfilePage implements OnInit {
     
   }
 
-  logOut() {
-    this.auth.logout();
+  settings() {
+    this.presentActionSheet();
   }
+    
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Options',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Saved posts',
+        icon: 'bookmark-outline',
+        handler: () => {
+          console.log("Saved clicked");
+          this.router.navigate([`user/profile/saved/${this.member_id}`]);
+        }
+      }, {
+        text: 'Edit Profile',
+        icon: 'create-outline',
+        handler: () => {
+          console.log('Edit Profile clicked');
+          this.router.navigate([`user/profile/edit-profile/${this.member_id}`]);
+        }
+      }, {
+        text: 'About App',
+        icon: 'list-outline',
+        handler: () => {
+          console.log('About App clicked');
+          this.router.navigate(['about-app/user']);
+        }
+      }, {
+        text: 'T & C',
+        icon: 'receipt-outline',
+        handler: () => {
+          console.log('T & C clicked');
+          this.router.navigate(['t-and-c/user']);
+        }
+      }, {
+        text: 'Help',
+        icon: 'alert-outline',
+        handler: () => {
+          console.log('Help clicked');
+          this.router.navigate(['help/user']);
+        }
+      }, {
+        text: 'Log out',
+        icon: 'log-out-outline',
+        handler: () => {
+          console.log('Log out clicked');
+          this.auth.logout();
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+
+    const { role } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  
+  }
+
+  changePage(post_id) {
+    this.router.navigate([`/user/homee/${post_id}`])
+  }
+
 }

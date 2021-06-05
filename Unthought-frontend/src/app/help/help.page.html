@@ -1,0 +1,67 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-icon name="arrow-back-outline" class="notifications-icon" size ="large" slot="start" (click)="backtoprofile()"></ion-icon>
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div class="ion-padding">
+      <h3>HELP !</h3>
+      <h5>Please Leave Your Issue here, we will get back to You As Soon As Possible </h5><br>
+    </div>
+    <form #form="ngForm" (ngSubmit)="help(form)">
+      <ion-grid>
+          <ion-row>
+              <ion-col size-md="6" offset-med="6">
+                <div class="req">* Required</div><br>
+              </ion-col>
+            </ion-row>  
+          <ion-row>
+              <ion-col size-md="6" offset-md="3">
+       <ion-item>
+           <ion-label position="floating">Alternative Phone Number:*</ion-label>
+           <ion-input type = "text" inputmode="numeric" minlength="10" maxlength="10" required ngModel name ="phone" #phCtrl="ngModel" ></ion-input>
+       </ion-item>
+       <ion-item *ngIf="!phCtrl.valid && phCtrl.touched" lines="none">
+          <div class="warn">Enter Valid Phone Number</div>
+         </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col size-md="6" offset-md="3">
+       <ion-item>
+           <ion-label position="floating">Name:*</ion-label>
+           <ion-input type = 'text'  ngModel name ="name" required #passCtrl="ngModel" maxlength="50"></ion-input>
+       </ion-item>
+        </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">The issue within 800 charaters. *</ion-label>
+                <ion-input type = 'text'  ngModel name ="des" required maxlength="50"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col size-md="6" offset-md="3">
+       <ion-button class="ion-margin-vertical" [disabled]="!form.valid" type ='submit' size='default' color="danger" expand="full">
+           Submit
+       </ion-button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+      </form>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="backtoprofile()" color="danger" expand="block">
+    Back to Profile
+  </ion-button>
+</ion-footer>

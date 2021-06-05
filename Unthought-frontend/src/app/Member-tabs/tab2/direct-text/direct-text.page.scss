@@ -1,0 +1,42 @@
+.tab-bar {
+    --background: black;
+    --border-color: white;
+}
+
+.heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-style: initial;  
+}
+
+.notifications-icon{
+    color: red;
+}
+
+.list-header {
+    --background: black;
+    --color: white;
+    text-align: center;
+    padding-bottom: 25px;
+}
+.name {
+    color: white;
+}
+.item {
+    --background: black;
+    border: white;
+    --border-color: white;
+    padding: 10px;
+}
+.list {
+    background: black;
+}
+.img {
+    width: 60px;
+    height: 60px;
+}
+
+.last_seen {
+    font-size: 20px;
+}

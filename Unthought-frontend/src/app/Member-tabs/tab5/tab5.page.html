@@ -9,136 +9,145 @@
 
 
 <ion-content [fullscreen]="true">
-  <div class="content">
-    <ion-grid>
-      
-      <ion-row>
-        <ion-col size="10" offset="1"><br>
-          <ion-img [src]='this.member_dp' class="img" ></ion-img>
-        </ion-col>
-      </ion-row>
+  
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col size="10" offset="1"><br>
+        <ion-img [src]='this.member_dp' class="img" ></ion-img>
+      </ion-col>
+    </ion-row>
 
-      <ion-row>
-        <ion-col>
-          <ion-card class="details_card" *ngIf = "this.user_data != undefined && this.own_profile == true" >
-            <ion-card-header>
-              <ion-card-title class="details_card_title">
-                {{ this.user_data[0].Member_name }}
-              </ion-card-title>
-              <ion-row>
-                <ion-col size="6" class="details_card_subtitle">
-                  <ion-card-subtitle>
-                    <b>Active Groups: {{ this.user_data[0].no_of_groups }}</b>
-                  </ion-card-subtitle>
-                </ion-col>
-                <ion-col size="6" class="details_card_subtitle_saved">
-                  <ion-card-subtitle>
-                  <b>Total Posts: {{ this.user_data[0].no_of_post }}</b>
-                  </ion-card-subtitle>
-                </ion-col>
-              </ion-row>
-            </ion-card-header>
-            <ion-card-content class="details_contents">
-            <b>About {{ this.user_data[0].Member_name }}:</b> {{ this.user_data[0].desc }} <br><br>
-            <b>Primary Domain:</b> {{ this.user_data[0].pri_specification_main }} <br>
-            <b>Primary Specialization:</b> {{ this.user_data[0].pri_specification_submain }} <br>
-            <b>Secondary Domain:</b> {{ this.user_data[0].sec_specification_main }} <br>
-            <b>Secondary Specialization:</b> {{ this.user_data[0].sec_specification_submain }}
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card class="details_card" *ngIf = "this.user_data != undefined && this.own_profile == false" >
-            <ion-card-header>
-              <ion-card-title class="details_card_title">
-                {{ this.user_data.Member_name }}
-              </ion-card-title>
-              <ion-row>
-                <ion-col size="6" class="details_card_subtitle">
-                  <ion-card-subtitle>
-                    <b>Active Groups: {{ this.user_data.no_of_groups }}</b>
-                  </ion-card-subtitle>
-                </ion-col>
-                <ion-col size="6" class="details_card_subtitle_saved">
-                  <ion-card-subtitle>
-                  <b>Total Posts: {{ this.user_data.no_of_post }}</b>
-                  </ion-card-subtitle>
-                </ion-col>
-              </ion-row>
-            </ion-card-header>
-            <ion-card-content class="details_contents">
-            <b>About {{ this.user_data.Member_name }}:</b> {{ this.user_data.desc }} <br><br>
-            <b>Primary Domain:</b> {{ this.user_data.pri_specification_main }} <br>
-            <b>Primary Specialization:</b> {{ this.user_data.pri_specification_submain }} <br>
-            <b>Secondary Domain:</b> {{ this.user_data.sec_specification_main }} <br>
-            <b>Secondary Specialization:</b> {{ this.user_data.sec_specification_submain }}
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card *ngIf = "this.check_post == true;">
-            <ion-list>
-              <ion-list-header>
-                <ion-label>Posts</ion-label>
-              </ion-list-header>
-              <ion-item *ngFor = " let user of this.post_image let i = index">
-                <ion-avatar slot="start">
-                  <img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp">
-                </ion-avatar>
-                <ion-label>
-                  <b>{{ user.fields.post_title }}</b><br>
-                  <ion-text *ngIf = "user.fields.active == true">active</ion-text>
-                  <ion-text *ngIf = "user.fields.active == false">not-active</ion-text>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card>
-
-          <ion-card *ngIf = "this.other_check_post == true;">
-            <ion-list>
-              <ion-list-header>
-                <ion-label>Collabrations</ion-label>
-              </ion-list-header>
-              <ion-item *ngFor = " let user of this.other_post_image let i = index">
-                <ion-avatar slot="start">
-                  <img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp">
-                </ion-avatar>
-                <ion-label>
-                  <b>{{ user.fields.post_title }}</b><br>
-                  <ion-text *ngIf = "user.fields.active == true">active</ion-text>
-                  <ion-text *ngIf = "user.fields.active == false">not-active</ion-text>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card>
-
-          <ion-card *ngIf = "this.own_profile == true" class="personal_details">
-            <ion-card-title class="personal_details_title">
-              Personal Details
+    <ion-row>
+      <ion-col>
+        <ion-card class="details_card" *ngIf = "this.user_data != undefined && this.own_profile == true" >
+          <ion-card-header>
+            <ion-card-title class="details_card_title">
+              {{ this.user_data[0].Member_name }}
             </ion-card-title>
-            <ion-card-content>
-              <b>Date Of Birth:</b> {{ this.user_data[0].dob }} <br>
-              <b>Gender:</b> {{ this.user_data[0].gender }} <br>
-              <b>Phone Number:</b> {{ this.user_data[0].phone_number }} <br>
-              <b>Email Id:</b> {{ this.user_data[0].email }} <br>
-              <div *ngIf = "this.user_data[0].working_status == true">
-                <b>Working Status:</b> {{ this.user_data[0].company_name }} <br>
-              </div>
-              <div *ngIf = "this.user_data[0].working_status == false">
-                <b>College:</b> {{ this.user_data[0].college_name }} <br>
-                <b>Course:</b> {{ this.user_data[0].course }} <br>
-              </div>
-            </ion-card-content>
-          </ion-card>
+            <ion-row>
+              <ion-col size="6" class="details_card_subtitle">
+                <ion-card-subtitle>
+                  <b>Active Groups: {{ this.user_data[0].no_of_groups }}</b>
+                </ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6" class="details_card_subtitle_saved">
+                <ion-card-subtitle>
+                <b>Total Posts: {{ this.user_data[0].no_of_post }}</b>
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content class="details_contents">
+          <b>About {{ this.user_data[0].Member_name }}:</b> {{ this.user_data[0].desc }} <br><br>
+          <b>Primary Domain:</b> {{ this.user_data[0].pri_specification_main }} <br>
+          <b>Primary Specialization:</b> {{ this.user_data[0].pri_specification_submain }} <br>
+          <b>Secondary Domain:</b> {{ this.user_data[0].sec_specification_main }} <br>
+          <b>Secondary Specialization:</b> {{ this.user_data[0].sec_specification_submain }}
+          </ion-card-content>
+        </ion-card>
 
-          <ion-card *ngIf = "this.own_profile == true">
-            <ion-card-header>
-              <ion-card-title class="Setting_title">
-                Setting & Edit Profile
-              </ion-card-title>
-            </ion-card-header>
-          </ion-card>
+        <ion-card class="details_card" *ngIf = "this.user_data != undefined && this.own_profile == false" >
+          <ion-card-header>
+            <ion-card-title class="details_card_title">
+              {{ this.user_data.Member_name }}
+            </ion-card-title>
+            <ion-row>
+              <ion-col size="6" class="details_card_subtitle">
+                <ion-card-subtitle>
+                  <b>Active Groups: {{ this.user_data.no_of_groups }}</b>
+                </ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6" class="details_card_subtitle_saved">
+                <ion-card-subtitle>
+                <b>Total Posts: {{ this.user_data.no_of_post }}</b>
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content class="details_contents">
+          <b>About {{ this.user_data.Member_name }}:</b> {{ this.user_data.desc }} <br><br>
+          <b>Primary Domain:</b> {{ this.user_data.pri_specification_main }} <br>
+          <b>Primary Specialization:</b> {{ this.user_data.pri_specification_submain }} <br>
+          <b>Secondary Domain:</b> {{ this.user_data.sec_specification_main }} <br>
+          <b>Secondary Specialization:</b> {{ this.user_data.sec_specification_submain }}
+          </ion-card-content>
+        </ion-card>
 
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+        <ion-card *ngIf = "this.check_post == true;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Posts</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor = " let user of this.post_image let i = index" (click)="changePage(user.fields.post_id)">
+              <ion-avatar slot="start">
+                <img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp">
+              </ion-avatar>
+              <ion-label>
+                <b>{{ user.fields.post_title }}</b><br>
+                <ion-text *ngIf = "user.fields.active == true">active</ion-text>
+                <ion-text *ngIf = "user.fields.active == false">not-active</ion-text>
+              </ion-label>
+              <ion-icon name="caret-forward" color="danger"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+        <ion-card *ngIf = "this.other_check_post == true;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Collabrations</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor = " let user of this.other_post_image let i = index" (click)="changePage(user.fields.post_id)">
+              <ion-avatar slot="start">
+                <img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp">
+              </ion-avatar>
+              <ion-label>
+                <b>{{ user.fields.post_title }}</b><br>
+                <ion-text *ngIf = "user.fields.active == true">active</ion-text>
+                <ion-text *ngIf = "user.fields.active == false">not-active</ion-text>
+              </ion-label>
+              <ion-icon name="caret-forward" color="danger"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+        <ion-card *ngIf = "this.own_profile == true" class="personal_details">
+          <ion-card-title class="personal_details_title">
+            Personal Details
+          </ion-card-title>
+          <ion-card-content>
+            <b>Date Of Birth:</b> {{ this.user_data[0].dob }} <br>
+            <b>Gender:</b> {{ this.user_data[0].gender }} <br>
+            <b>Phone Number:</b> {{ this.user_data[0].phone_number }} <br>
+            <b>Email Id:</b> {{ this.user_data[0].email }} <br>
+            <div *ngIf = "this.user_data[0].working_status == true">
+              <b>Working Status:</b> {{ this.user_data[0].company_name }} <br>
+            </div>
+            <div *ngIf = "this.user_data[0].working_status == false">
+              <b>College:</b> {{ this.user_data[0].college_name }} <br>
+              <b>Course:</b> {{ this.user_data[0].course }} <br>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf = "this.own_profile == true" (click)='settings()'>
+          <ion-card-header class="setting_header">
+            <ion-row>
+              <ion-col size="10">
+                <ion-card-title class="Setting_title">
+                  Setting & Edit Profile
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="2">
+                <ion-icon name="caret-down-outline" size="large" color="danger" ></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>

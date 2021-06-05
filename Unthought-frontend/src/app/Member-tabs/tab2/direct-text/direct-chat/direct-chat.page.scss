@@ -1,0 +1,63 @@
+.tab-bar {
+    --background: black;
+    --border-color: white;
+}
+
+.heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-style: initial;  
+}
+
+.notifications-icon{
+    color: red;
+}
+
+.content {
+    background: black;
+}
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.other-message {
+    background: red; //var(--ion-color-tertiary);
+    color: #fff;
+}
+
+.my-message {
+    background: red; //var(--ion-color-secondary);
+    color: #fff;
+}
+
+.time {
+    float: right;
+    color: #dfdfdf;
+    font-size: small;
+}
+
+.message-input{
+    width: 100%;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    resize: none;
+    background: #fff;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.msg-button {
+    --padding-start: 0em;
+    --padding-end: 0em;
+}
+
+ion-footer {
+    background-color: black;
+    background: black;
+    background-size: cover;
+}

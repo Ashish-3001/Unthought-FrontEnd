@@ -1,0 +1,40 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-icon name="arrow-back-outline" class="notifications-icon" size ="large" slot="start" (click)="backtoprofile()"></ion-icon>
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content class="details_contents">
+            1) Unthought is an App that is focused on breaking the above-mentioned myths and problems for aspiring entrepreneurs by making a 
+            platform that helps users at every step of their entrepreneurship journey - from getting the idea all the way till finding invertor 
+            and everything in between. <br>
+            2) “Unthought” can be used by anyone and everyone who are interested in entrepreneurship or who have already started their entrepreneur 
+            journey. <br>
+            3) This App can also be used by Students and young Graduates to gain some experience and skill by joining hands with many of the 
+            on going projects. <br>
+            4) There will also be a separate portal for mentors. Various mentors from different sectors can use this app and guide students in their 
+            projects or can start and work on their own idea or project. <br>
+            5) Finally, there will be a third portal for investors. Where they will be shown the projects which are at final stages and are looking for investment.
+            The investors are open to discuss over virtual meetings, invest and join hands with any project they find interesting.  
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="backtoprofile()" color="danger" expand="block">
+    Back to Profile
+  </ion-button>
+</ion-footer>

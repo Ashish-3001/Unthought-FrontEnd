@@ -18,6 +18,8 @@ export class MemberPostPage {
   selected2: any;
   primary3_toggle: boolean = false;
   selected3:any;
+  primary4_toggle:boolean = false;
+  selected4:any;
   
   constructor(public menuCtrl: MenuController, public alertController: AlertController,private router: Router,) {}
 
@@ -35,6 +37,10 @@ export class MemberPostPage {
   primarySelcted3(type){
     this.selected3 = type;
     this.primary3_toggle = false;
+  }
+  primarySelcted4(type){
+    this.selected4 = type;
+    this.primary4_toggle = false;
   }
 }
 

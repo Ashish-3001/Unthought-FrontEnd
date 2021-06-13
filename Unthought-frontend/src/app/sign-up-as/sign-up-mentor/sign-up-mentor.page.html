@@ -5,5 +5,175 @@
 </ion-header>
 
 <ion-content>
+  <ion-slides pager="true" class="ion-slides">
+    <ion-slide>
+      <div>
+        <form #form="ngForm" (ngSubmit)="presentAlterConfirm(form)">
+          <ion-grid>
+            <ion-row >
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div class="req">*Required</div>
+              </ion-col>
+            </ion-row>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Unique Name*</ion-label>
+                    <ion-input type = 'text' ngModel name ="Mname" required #MnameCtrl="ngModel"></ion-input>
+                 </ion-item>
+                 <ion-item *ngIf="!MnameCtrl.valid && MnameCtrl.touched" lines="none">
+                   <div class="warn"> Please Enter Your Unique Name</div>
+                 </ion-item>
+                </div>
+              </ion-col>
+            </ion-row> 
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                   <ion-label position="floating">Mentor Name*</ion-label>
+                   <ion-input type = 'text' ngModel name ="Mname" required #MnameCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!MnameCtrl.valid && MnameCtrl.touched" lines="none">
+                   <div class="warn"> Please Enter Your Name</div>
+                  </ion-item>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>  
+                 <ion-item>
+                   <ion-label>Gender:*</ion-label>
+                     <ion-select interface="popover"ngModel name ="gender" required #genderCtrl="ngModel">
+                       <ion-select-option value="M">Male</ion-select-option>
+                       <ion-select-option value="F">Female</ion-select-option>
+                       <ion-select-option value="O">Others</ion-select-option>
+                     </ion-select>
+                 </ion-item> 
+                 <ion-item *ngIf="!genderCtrl.valid && genderCtrl.touched" lines="none">
+                   <div class="warn">  Please Enter Your Gender</div>
+                 </ion-item>
+                </div>
+               </ion-col>
+             </ion-row>
+             <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <ion-item>
+                   <ion-label position="floating">Date of Birth*</ion-label>
+                   <ion-input type = 'text' ngModel name ="dob" required #dobCtrl="ngModel"></ion-input>
+                 </ion-item>
+                 <ion-item *ngIf="!dobCtrl.valid && dobCtrl.touched" lines="none">
+                   <div class="warn">Please Enter Your Date Of Birth</div>
+                 </ion-item>
+              </ion-col>
+           </ion-row>
+             <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                 <ion-item>
+                  <ion-label position="floating">Phone Number*</ion-label>
+                    <ion-input type = 'text' inputmode="numeric" ngModel name ="phonenumber" required maxlength="10" minlength="10" #phonenumberCtrl="ngModel" ></ion-input>
+                 </ion-item>
+                <ion-item *ngIf="!phonenumberCtrl.valid && phonenumberCtrl.touched" lines="none">
+                   <div class="warn">  Please Enter Valid Phone Number</div>
+                </ion-item>  
+              </ion-col>
+           </ion-row>
+           <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <ion-item>
+                <ion-label position="floating">Email Address*</ion-label>
+                <ion-input type = 'text' ngModel name ="email" required #emailCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!emailCtrl.valid && emailCtrl.touched" lines="none">
+                <div class="warn">  Please Enter Email Address</div>
+              </ion-item>
+             </ion-col>
+         </ion-row>
+         <ion-row color="primary" justify-content-center>
+           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+             <div padding>
+               <ion-item>
+                 <ion-label position="floating">Working Profession*</ion-label>
+                 <ion-input type = 'text' ngModel name ="workprofession" required #workprofessionCtrl="ngModel"></ion-input>
+               </ion-item>
+               <ion-item *ngIf="!workprofessionCtrl.valid && workprofessionCtrl.touched" lines="none">
+                 <div class="warn">  Please Enter Working Profession</div>
+               </ion-item>
+             </div>
+           </ion-col>
+         </ion-row>
+          </ion-grid>
+        </form>
+      </div>
+    </ion-slide>
 
+    <ion-slide>
+      <h1>Slide 2 </h1>
+      <div> 
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card class="primary_select" (click)="this.primary_toggle = true">
+                <div class="pry">Select Primary Domain</div>
+              </ion-card>
+              <ion-card *ngIf="this.primary_toggle == true">
+                <ion-chip class="primary2_select" (click)="primarySelcted('software development')"> Software Development</ion-chip> <br>
+                <ion-card class="primarysub" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'software development' ">
+                  <ion-chip (click)="primarysubSelcted('web development')"> Web Development</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('app development')"> App Development</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('arvr program')"> Ar/Vr Program</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('ethical hacking')"> Ethical Hacking</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('game designer')"> Game Designer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('ml engineer')"> M.L Engineer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('software developer')"> Software Developer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('cyber security')"> Cyber Security</ion-chip>
+                </ion-card>
+                <ion-chip class="primary2_select" (click)="primarySelcted('marketing')"> Marketing</ion-chip> <br>
+                <ion-card class="primarysub" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'marketing' ">
+                  <ion-chip (click)="primarysubSelcted('digital marketing')"> Digitial Marketing</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('direct marketing')"> Direct Marketing</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('content marketing')"> Content Marketing</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('network marketing')"> Network Marketing</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('social marketing')"> SOCIAL MARKETING</ion-chip>
+               </ion-card>
+                  
+                <ion-chip class="primary2_select" (click)="primarySelcted('designing')"> Designing</ion-chip> <br>
+                <ion-card class="primarysub" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'designing' ">
+                  <ion-chip (click)="primarysubSelcted('graphic designer')"> Graphic Designer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('ux/ui designer')"> Ux/Ui Designer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('animator')"> Animator</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('fasion designer')"> Fasion Designer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('illustrator')"> Illustrator</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('interior designer')"> Interior Designer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('photographer')"> Photographer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('product designer')"> Product Designer</ion-chip>
+                  <ion-chip (click)="primarysubSelcted('sound designer')"> Sound Designer</ion-chip>
+                </ion-card>
+                <ion-chip class="primary2_select" (click)="primarySelcted('legal')"> Legal</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('finance')"> Finance</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('general')"> General</ion-chip>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+              
+    </ion-slide>
+    
+    <ion-slide>
+      <h1>Slide 3 </h1>
+      <div>
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+            </ion-col>
+           </ion-row>
+        </ion-grid>        
+      </div>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

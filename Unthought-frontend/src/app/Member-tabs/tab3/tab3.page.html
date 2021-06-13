@@ -1,4 +1,218 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Posts</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <app-explore-container name="Adding Posts Page"></app-explore-container>
+  <ion-slides pager="true" class="ion-slides">
+    <ion-slide>
+      <form #form="ngForm">
+        <div>
+          <ion-grid>
+            <ion-row>
+             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+               <div class="req">*Required</div>
+             </ion-col>
+            </ion-row>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Admin Name*</ion-label>
+                    <ion-input type = 'text' ngModel name ="adminname" required #adminnameCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!adminnameCtrl.valid && adminnameCtrl.touched" lines="none">
+                    <div class="warn"> Please Enter Your Admin Name</div>
+                  </ion-item>                                 
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Admin Designation*</ion-label>
+                    <ion-input type = 'text' ngModel name ="admindesig" required #admindesigCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!admindesigCtrl.valid && admindesigCtrl.touched" lines="none">
+                    <div class="warn"> Please Enter Your Admin Designation</div>
+                  </ion-item>                                 
+                </div>
+              </ion-col>
+            </ion-row>         
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Title Of Post*</ion-label>
+                    <ion-input type = 'text' ngModel name ="posttitle" required #posttitleCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!posttitleCtrl.valid && posttitleCtrl.touched" lines="none">
+                    <div class="warn"> Please Enter Your Post Title</div>
+                  </ion-item>                                 
+                </div>
+              </ion-col>
+            </ion-row>         
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Short Description Of Post*</ion-label>
+                    <ion-input type = 'text' ngModel name ="shortdec" required #shortdecCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!shortdecCtrl.valid && shortdecCtrl.touched" lines="none">
+                    <div class="warn"> Please Put Short Description Of Post</div>
+                  </ion-item>                                 
+                </div>
+              </ion-col>
+            </ion-row>         
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Long Description Of Post*</ion-label>
+                    <ion-input type = 'text' ngModel name ="longdec" required #longdecCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!longdecCtrl.valid && longdecCtrl.touched" lines="none">
+                    <div class="warn"> Please Put Long Description Of Post</div>
+                  </ion-item>                                 
+                </div>
+              </ion-col>
+            </ion-row>         
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Goal Of The Project*</ion-label>
+                    <ion-input type = 'text' ngModel name ="projgoal" required #projgoalCtrl="ngModel"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!projgoalCtrl.valid && projgoalCtrl.touched" lines="none">
+                    <div class="warn"> Please Enter Goal Of Project</div>
+                  </ion-item>                                 
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </form>
+    </ion-slide>
+    <ion-slide>
+      <div> 
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card class="primary_select" (click)="this.primary_toggle = true">
+                <div class="pry">REQURIMENT 1*</div>
+              </ion-card>
+              <ion-card *ngIf="this.primary_toggle == true">
+                <ion-chip class="primary2_select" (click)="primarySelcted('web development')"> Web Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('app development')"> App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('arvr program')"> Ar/Vr Program</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('ethical hacking')"> Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('game designer')"> Game Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('ml engineer')"> M.L Engineer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('software developer')"> Software Developer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('cyber security')"> Cyber Security</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('digital marketing')"> Digitial Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('content marketing')"> Content Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('network marketing')"> Network Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('social marketing')"> SOCIAL MARKETING</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('graphic designer')"> Graphic Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('ux/ui designer')"> Ux/Ui Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('animator')"> Animator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('fasion designer')"> Fasion Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('interior designer')"> Interior Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('photographer')"> Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('product designer')"> Product Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('sound designer')"> Sound Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('legal')"> Legal</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('finance')"> Finance</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('general')"> General</ion-chip>
+              </ion-card>
+             
+              <ion-card class="primary_select" (click)="this.primary2_toggle = true">
+                <div class="pry">REQURIMENT 2*</div>
+              </ion-card>
+              <ion-card *ngIf="this.primary2_toggle == true">
+                <ion-chip class="primary2_select" (click)="primarySelcted2('web development')"> Web Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('app development')"> App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('arvr program')"> Ar/Vr Program</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('ethical hacking')"> Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('game designer')"> Game Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('ml engineer')"> M.L Engineer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('software developer')"> Software Developer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('cyber security')"> Cyber Security</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('digital marketing')"> Digitial Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('content marketing')"> Content Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('network marketing')"> Network Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('social marketing')"> SOCIAL MARKETING</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('graphic designer')"> Graphic Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('ux/ui designer')"> Ux/Ui Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('animator')"> Animator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('fasion designer')"> Fasion Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('interior designer')"> Interior Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('photographer')"> Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('product designer')"> Product Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('sound designer')"> Sound Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('legal')"> Legal</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('finance')"> Finance</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('general')"> General</ion-chip>
+              </ion-card>
+              <ion-card class="primary_select" (click)="this.primary3_toggle = true">
+                <div class="pry">REQURIMENT 3*</div>
+              </ion-card>
+              <ion-card *ngIf="this.primary3_toggle == true">
+                <ion-chip class="primary2_select" (click)="primarySelcted3('web development')"> Web Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('app development')"> App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('arvr program')"> Ar/Vr Program</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('ethical hacking')"> Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('game designer')"> Game Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('ml engineer')"> M.L Engineer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('software developer')"> Software Developer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('cyber security')"> Cyber Security</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('digital marketing')"> Digitial Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('content marketing')"> Content Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('network marketing')"> Network Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('social marketing')"> SOCIAL MARKETING</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('graphic designer')"> Graphic Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('ux/ui designer')"> Ux/Ui Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('animator')"> Animator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('fasion designer')"> Fasion Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('interior designer')"> Interior Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('photographer')"> Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('product designer')"> Product Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('sound designer')"> Sound Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('legal')"> Legal</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('finance')"> Finance</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('general')"> General</ion-chip>
+              </ion-card>
+            
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
+    
+    <ion-slide>
+     <h2>slide 3</h2>
+     <div>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </div>
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>

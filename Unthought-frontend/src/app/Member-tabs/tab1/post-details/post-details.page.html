@@ -3,7 +3,7 @@
     <ion-title>
       <div class="heading">Unthought</div>
     </ion-title>
-    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -119,7 +119,9 @@
               <ion-icon name="share-social-outline" size ="large" ></ion-icon>
             </ion-col>
             <ion-col size="5">
-              <ion-button class="read_more" color="dark" shape="round" size="small">Request Join</ion-button> 
+              <ion-button *ngIf="this.your_post == true && this.request_sent == false" color="dark" shape="round" size="small" (click)="this.presentAlertMemberAlready()"> Already member</ion-button>
+              <ion-button *ngIf="this.your_post == false && this.request_sent == false" color="dark" shape="round" size="small" (click)="RequestJoin()">Request Join</ion-button>
+              <ion-button *ngIf="this.request_sent == true && this.your_post == false" color="dark" shape="round" size="small" (click)="this.presentAlertSentAlready()">Request Sent</ion-button>
             </ion-col>
           </ion-row>
         </ion-card>

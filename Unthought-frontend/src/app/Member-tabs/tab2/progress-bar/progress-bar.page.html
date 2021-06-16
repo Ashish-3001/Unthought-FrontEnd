@@ -1,0 +1,101 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-icon name="camera-reverse-outline" slot="start" size ="large" class="notifications-icon" (click)="this.presentAlertUpdate()"></ion-icon>
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col>
+
+      <ion-img [src]="this.prograss_ing" class="pro_img"></ion-img>
+
+      <div>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="danger" (click)="options()">
+              <ion-icon name="list"></ion-icon>
+              Options
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-card class="details_card">
+        <ion-card-header>
+          <ion-card-title class="details_card_title">
+            {{ this.postDetails.title_of_post }}
+          </ion-card-title>
+          <ion-row>
+            <ion-col size="6" class="details_card_subtitle">
+              <ion-card-subtitle>
+                <b>Likes: {{ this.postDetails.no_of_links }}</b>
+              </ion-card-subtitle>
+            </ion-col>
+            <ion-col size="6" class="details_card_subtitle_saved">
+              <ion-card-subtitle>
+              <b>Saved: {{ this.postDetails.no_of_saved }}</b>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+        </ion-card-header>
+        <ion-card-content class="details_contents">
+        <b>About Project:</b> {{ this.postDetails.long_desc }} <br><br>
+        <b>Goal of the Project:</b> {{ this.postDetails.goal_of_project }} <br>
+        <b>Work Done till now:</b> {{ this.postDetails.workdone }}
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Looking For</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>1) <b>{{ this.postDetails.requirement1 }}</b></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>2) <b>{{ this.postDetails.requirement2 }}</b></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>3) <b>{{ this.postDetails.requirement3 }}</b></ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>4) <b>{{ this.postDetails.requirement4 }}</b></ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <ion-card>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Project Members</ion-label>
+          </ion-list-header>
+          <ion-item (click)="changePage(this.postDetails.admin_id)" >
+            <ion-avatar slot="start">
+              <img [src]="this.postMembersDp[this.postDetails.admin_id]">
+            </ion-avatar>
+            <ion-label>
+              Admin:<b>{{ this.postDetails.admin_name }}</b>
+            </ion-label>
+            <ion-icon name="caret-forward" color="danger"></ion-icon>
+          </ion-item>
+          <ion-item *ngFor = " let user of this.postMembers let i = index" (click)="changePage(user.user_id)">
+            <ion-avatar slot="start">
+              <img [src]="this.postMembersDp[user.user_id]">
+            </ion-avatar>
+            <ion-label>
+              Member:<b>{{ user.user_name }}</b>
+            </ion-label>
+            <ion-icon name="caret-forward" color="danger"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
+</ion-content>

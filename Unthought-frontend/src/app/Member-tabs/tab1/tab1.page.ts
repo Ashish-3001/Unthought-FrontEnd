@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -22,11 +23,13 @@ export class MemberHomePage {
   instrested_people: any = [];
   instrested_member_img: string ='';
   instrested_people_img_dict: object = {};
+  trending_projects: any = [];
 
 
   constructor(
     private http: HttpClient,
     private auth: AuthenticationService,
+    private router: Router,
     ) {}
 
   ngOnInit() {
@@ -68,6 +71,15 @@ export class MemberHomePage {
             this.dp_image_dict[data[i].fields.member_id] = 'http://127.0.0.1:8000/media/' + data[i].fields.member_dp;
           }
           console.log(this.dp_image_dict);
+          this.http.get('http://127.0.0.1:8000/Trending_post/').subscribe((data) => {
+            var postdata_img = {
+              sorted_post_id: data.toString(),
+            }
+            this.http.post('http://127.0.0.1:8000/sorted-posts-img/', postdata_img ).subscribe( (data:any = [{}]) => {  
+              this.trending_projects = data;
+              console.log(this.trending_projects);
+            })
+          })
         })
       })
 
@@ -104,6 +116,10 @@ export class MemberHomePage {
         });
       })
     })
+  }
+
+  ionViewWillEnter(){
+    this.searchToggle = false;
   }
 
   like(post_id, title_of_post) {
@@ -189,4 +205,11 @@ export class MemberHomePage {
     this.searchToggle = type;
   }
 
+  chagepage(id) {
+    this.router.navigate([`user/profilee/${id}`])
+  }
+
+  chagepagetrending(id) {
+    this.router.navigate([`user/homee/${id}`])
+  }
 }

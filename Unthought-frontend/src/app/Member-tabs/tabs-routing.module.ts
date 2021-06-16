@@ -18,7 +18,11 @@ const routes: Routes = [
       {
         path: 'active-zone',
         loadChildren: () => import('./tab2/tab2.module').then(m => m.MemberActiveZonePageModule)
-      },    
+      },
+      {
+        path: 'active-zone/progress-bar/:post_id',
+        loadChildren: () => import('./tab2/progress-bar/progress-bar.module').then( m => m.ProgressBarPageModule)
+      },
       {
         path: 'active-zone/group-chat/:post_id',
         loadChildren: () => import('./tab2/group-chat/group-chat.module').then( m => m.GroupChatPageModule)
@@ -48,7 +52,11 @@ const routes: Routes = [
         loadChildren: () => import('./tab5/tab5.module').then( m => m.MemberProfilePageModule)
       },
       {
-        path: 'profile/:member_id',
+        path: 'profilee/:member_id',
+        loadChildren: () => import('./tab5/tab5.module').then( m => m.MemberProfilePageModule)
+      },
+      {
+        path: 'profilee/:member_id/:add',
         loadChildren: () => import('./tab5/tab5.module').then( m => m.MemberProfilePageModule)
       },
       {
@@ -56,8 +64,20 @@ const routes: Routes = [
         loadChildren: () => import('./tab5/saved/saved.module').then( m => m.SavedPageModule)
       },
       {
-        path: 'profile/edit-profile/:member_id',
+        path: 'profilee/edit-profile/:member_id',
         loadChildren: () => import('./tab5/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+      },
+      {
+        path: 'search/:for',
+        loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+      },
+      {
+        path: 'search/:for/:add',
+        loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+      },    
+      {
+        path: 'notifications',
+        loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
       },
       {
         path: '',

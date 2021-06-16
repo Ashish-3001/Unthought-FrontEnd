@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -20,12 +21,16 @@ export class PostDetailsPage implements OnInit {
   postMembersDp: object = {};
   liked:boolean = false;
   saved:boolean = false;
+  your_post: boolean = false;
+  request_sent: boolean = false;
+  user_type: any;
 
   constructor(
     private http: HttpClient,
     private auth: AuthenticationService,
     private acitivatedRoute: ActivatedRoute,
     private router: Router,
+    public alertController: AlertController,
     ) { }
 
   ngOnInit() {
@@ -33,6 +38,12 @@ export class PostDetailsPage implements OnInit {
     this.acitivatedRoute.paramMap.subscribe(paraMap => {
       this.auth.data.then((value) => {
         this.user_data = value;
+        if(this.user_data[0].pri_specification_submain) {
+          this.user_type = 'member';
+        }
+        else {
+          this.user_type = 'mentor'
+        }
         if(!paraMap.has('post_id')) {
           console.log('error');
           return
@@ -57,7 +68,7 @@ export class PostDetailsPage implements OnInit {
             this.postImage1 = data[0].post_dp;
             this.postImage2 = data[0].post_pic1;
             this.postImage3 = data[0].post_pic2;
-            this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=${post_id}&user_id=`).subscribe( (data:any = [{}]) => {
+            this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=${post_id}&user_id=&active=true`).subscribe( (data:any = [{}]) => {
               this.postMembers = data;
               console.log(this.postMembers);
               for(var i = 0; i<this.postMembers.length; i++) {
@@ -75,6 +86,22 @@ export class PostDetailsPage implements OnInit {
               })
             });
           })
+          if(this.user_data[0].id == this.postDetails.admin_id) {
+            this.your_post = true;
+          }
+          else {
+            this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=${this.postDetails.id}&user_id=${this.user_data[0].id}&active=true`).subscribe( (data:any) => {
+              var n: number = data.length;
+              if(n>0 && n==1) {
+                if(data[0].active == true) {
+                  this.your_post = true;
+                }
+                else {
+                  this.request_sent = false;
+                }
+              }
+            });
+          }
         });
       });
     });
@@ -153,8 +180,100 @@ export class PostDetailsPage implements OnInit {
     });
   }
 
+  RequestJoin() {
+    this.presentAlertConfirm();
+  }
+
   
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Confirmation',
+      message: '<strong>Are you sure you Send a Request to join and be apart of this project</strong> ??',
+      buttons: [{
+        text: 'Send',
+        handler: () => {
+          console.log("join request clicked");
+          var postdata = {
+            post_id: this.postDetails.id,
+            post_title: this.postDetails.title_of_post,
+            user_id: this.user_data[0].id,
+            user_name: this.user_data[0].Member_name,
+            user_type: this.user_type,
+            active: false,
+            sent: true,
+          }
+          this.http.post('http://127.0.0.1:8000/ProjectMember/',postdata).subscribe((data) => {
+            console.log(data);
+            this.request_sent = true;
+          }, (error) => {
+            this.presentAlertSorry();
+          });
+        }
+      },
+      {
+        text: 'cancel',
+        role: 'cancel',
+        cssClass: 'alert-button',
+      }]
+    });
+
+    await alert.present();
+
+  }
+
+  async presentAlertSentAlready() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom',
+      header: 'Request Sent Already',
+      message: 'Your Request has been sent to the admin <strong>Please Wait</strong> for the response !!!',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          cssClass: 'alert-button',
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertMemberAlready() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom',
+      header: 'Already in the group',
+      message: 'Your Already a part of this project,<strong>Please</strong> chech the <strong>active tab</strong> to see the activity of this Project !!!',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          cssClass: 'alert-button',
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertSorry() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom',
+      header: 'Try Again',
+      message:  'Something went wrong. <strong>Please Try Again</strong>!!!',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          cssClass: 'alert-button',
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   changePage(member_id) {
-    this.router.navigate([`/user/profile/${member_id}`])
+    this.router.navigate([`/user/profilee/${member_id}`])
   }
 }

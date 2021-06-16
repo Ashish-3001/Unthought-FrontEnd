@@ -3,7 +3,7 @@
     <ion-title>
       <div class="heading">Unthought</div>
     </ion-title>
-    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -31,12 +31,12 @@
           </ion-row>
           <ion-row>
             <ion-col offset=2>
-              <ion-chip class="search-chip" >
+              <ion-chip class="search-chip" routerLink="/user/search/project">
                 Projects
               </ion-chip>
-              <ion-chip class="search-chip" >
-                User
-              </ion-chip><ion-chip class="search-chip" >
+              <ion-chip class="search-chip" routerLink="/user/search/members" >
+                Members
+              </ion-chip><ion-chip class="search-chip"  routerLink="/user/search/mentors" >
                 Mentors
               </ion-chip>
             </ion-col>
@@ -45,54 +45,12 @@
         <ion-text class="trending"> <h3>Trending Project</h3> </ion-text>
         <ion-card class="card">
           <ion-slides pager="true" class="slides">
-            <ion-slide>
+            <ion-slide *ngFor = " let user of this.trending_projects; let i = index" (click)="chagepagetrending(user.fields.post_id)">
               <ion-col size="12">
-                <ion-icon name="person-outline" class="img"></ion-icon> 
-                <ion-row>
-                  <ion-text class="box">
-                    que skip
-                  </ion-text>
-                </ion-row>
-              </ion-col>
-            </ion-slide>
-            <ion-slide>
-              <ion-col size="12">
-                <ion-icon name="person-outline" class="img"></ion-icon> 
-                <ion-row>
-                  <ion-text class="box">
-                    <h5> oafnvon </h5>
-                  </ion-text>
-                </ion-row>
-              </ion-col>
-            </ion-slide>
-            <ion-slide>
-              <ion-col size="12">
-                <ion-icon name="person-outline" class="img"></ion-icon> 
-                <ion-row>
-                  <ion-text class="box">
-                    <h5> que skip </h5>
-                  </ion-text>
-                </ion-row>
-              </ion-col>
-            </ion-slide>
-            <ion-slide>
-              <ion-col size="12">
-                <ion-icon name="person-outline" class="img"></ion-icon> 
-                <ion-row>
-                  <ion-text class="box">
-                    <h5> qavina </h5>
-                  </ion-text>
-                </ion-row>
-              </ion-col>
-            </ion-slide>
-            <ion-slide>
-              <ion-col size="12">
-                <ion-icon name="person-outline" class="img"></ion-icon> 
-                <ion-row>
-                  <ion-text class="box">
-                    <h5> unthought </h5>
-                  </ion-text>
-                </ion-row>
+                <ion-img *ngIf='this.user.pk' [src]='"http://127.0.0.1:8000/media/" + this.user.fields.post_dp'  class="slide_img" ></ion-img> 
+                <div class="trending_text">
+                  {{ this.user.fields.post_title }}
+                </div>
               </ion-col>
             </ion-slide>
           </ion-slides>
@@ -156,7 +114,7 @@
         <ion-text class="interested"><h3>People you might interested in</h3></ion-text>
         <div class="ppl">
           <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-            <ion-slide *ngFor="let user of this.instrested_people; let i = index" style="width: 175px; height: 250px; border: 2px solid #f8f8f8">
+            <ion-slide *ngFor="let user of this.instrested_people; let i = index" style="width: 175px; height: 250px; border: 2px solid #f8f8f8" (click)="chagepage(user.pk)">
               <ion-col>
                 <ion-label class="instrested_people_name"><b>{{ user.fields.Member_name }}</b></ion-label>
                 <ion-list class="instrested_people_des">{{ user.fields.pri_specification_submain }} and {{ user.fields.sec_specification_submain }}</ion-list>

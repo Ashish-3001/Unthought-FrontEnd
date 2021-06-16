@@ -1,0 +1,141 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="this.type == 'project' ">
+    <ion-searchbar showCancelButton="focus" placeholder = "search Projects by category or project title"  enterkeyhint="enter" [(ngModel)] ="this.test" (keyup.enter)="searchEnter()" (ionClear)="this.search_state=false && searchEnter()" (ionFocus)="this.search_state=true" class="search-bar"></ion-searchbar>
+    <div *ngIf="this.search_state == true">
+      <ion-list class="search-div">    
+        <ion-list-header>
+          <div class="text">Search For Specific Project with project title: <br> Eg: Unthought</div>
+          </ion-list-header> <br>
+          <div class="or">OR</div> <br>
+        <ion-list-header>
+        <div class="text">Search For Projects with requiments in any Specific category <br> Eg: App development</div>
+        </ion-list-header>  
+      </ion-list>
+    </div>
+  </div>
+  <div *ngIf="this.type == 'members' ">
+    <ion-searchbar showCancelButton="focus" placeholder = "search for members by category or username"  enterkeyhint="enter" [(ngModel)] ="this.test" (keyup.enter)="searchEnter()" (ionClear)="this.search_state=false && searchEnter()" (ionFocus)="this.search_state=true" class="search-bar"></ion-searchbar>
+    <div *ngIf="this.search_state == true">
+      <ion-list class="search-div">    
+        <ion-list-header>
+          <div class="text">Search For Specific Member with there username: <br> Eg: Unthought</div>
+          </ion-list-header> <br>
+          <div class="or">OR</div> <br>
+        <ion-list-header>
+        <div class="text">Search For Members in any Specific category accoring to your requiments<br> Eg: App development</div>
+        </ion-list-header>  
+      </ion-list>
+    </div>
+  </div>
+  <div *ngIf="this.type == 'mentors' ">
+    <ion-searchbar showCancelButton="focus" placeholder = "search for Mentors by category or username"  enterkeyhint="enter" [(ngModel)] ="this.test" (keyup.enter)="searchEnter()" (ionClear)="this.search_state=false && searchEnter()" (ionFocus)="this.search_state=true" class="search-bar"></ion-searchbar>
+    <div *ngIf="this.search_state == true">
+      <ion-list class="search-div">    
+        <ion-list-header>
+          <div class="text">Search For Specific Mentor with there username: <br> Eg: Unthought</div>
+          </ion-list-header> <br>
+          <div class="or">OR</div> <br>
+        <ion-list-header>
+        <div class="text">Search For Mentors in any Specific category accoring to your requiments <br> Eg: App development</div>
+        </ion-list-header>  
+      </ion-list>
+    </div>
+  </div>
+
+  <div *ngIf='this.type == "project" && this.dp_image_dict != undefined'>
+    <ion-card *ngFor = " let user of this.searchData; let i = index" class="post-card">
+      <ion-row >
+        <ion-col size="3" class="post_header">
+          <ion-img *ngIf='this.dp_image_dict[user.admin_id]' [src]='this.dp_image_dict[user.admin_id]' class="img" ></ion-img>
+        </ion-col>
+        <ion-col size="9" class="post_header">
+          <ion-card-header>
+            <ion-card-title>
+              {{ user.admin_name }}
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{ user.admin_designation }}
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+      <ion-card-content class="post_content">
+        <ion-row>
+          <ion-col>
+            <ion-text class="post_title"> <u><b> Project Title</b></u>: {{ user.title_of_post }}</ion-text> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-text class="post_desc"> <u><b> About</b></u>: {{ user.short_desc }} </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row class="post_img_row">
+          <ion-col>
+            <ion-img  [src]='this.image_dict[user.id]' class="post_img" ></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="2.5">
+            <ion-icon  (click)='like(user.id, user.title_of_post)' *ngIf='this.liked_post.includes(user.id) == false' name="thumbs-up-outline" size ="large"></ion-icon>
+            <ion-icon  (click)='dislike(user.id)' *ngIf='this.liked_post.includes(user.id) == true' name="thumbs-up" size ="large" class="like-save-saerch"></ion-icon>
+          </ion-col>
+          <ion-col size="2.5">
+            <ion-icon (click)='saved(user.id, user.title_of_post)' *ngIf='this.saved_post.includes(user.id) == false' name="bookmark-outline" size ="large" ></ion-icon>
+            <ion-icon (click)='unsaved(user.id)' *ngIf='this.saved_post.includes(user.id) == true' name="bookmark" size ="large" class="like-save-saerch"></ion-icon>
+          </ion-col>
+          <ion-col size="2.5">
+            <ion-icon name="share-social-outline" size ="large" ></ion-icon>
+          </ion-col>
+          <ion-col size="4.5">
+            <ion-row>
+              <ion-col size="8">
+                <ion-button (click)="changePage(user.id)" class="read_more" color="dark" shape="round" size="small">read more</ion-button> 
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+  <div *ngIf="this.adding_members == true && this.search_state == false" class="add-text">
+    Search for Members and Send a request asking them to join Your project.
+  </div>
+  <div *ngIf='this.type == "members" && this.dp_image_dict != undefined'>
+    <ion-card *ngFor = " let user of this.searchData; let i = index" class="post-card" (click)="changePage(user.id)">
+      <ion-row >
+        <ion-col size="3" class="post_header">
+          <ion-img *ngIf='this.dp_image_dict[user.id]' [src]='this.dp_image_dict[user.id]' class="img" ></ion-img>
+        </ion-col>
+        <ion-col size="9" class="post_header">
+          <ion-card-header>
+            <ion-card-title>
+              {{ user.Member_name }}
+            </ion-card-title>
+            <ion-card-subtitle>
+              username: {{ user.unique_name }}
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+      <ion-card-content class="details_contents">
+        <b>Primary Domain:</b> {{ this.user.pri_specification_main }} <br>
+        <b>Primary Specialization:</b> {{ this.user.pri_specification_submain }} <br>
+        <b>Secondary Domain:</b> {{ this.user.sec_specification_main }} <br>
+        <b>Secondary Specialization:</b> {{ this.user.sec_specification_submain }}
+      </ion-card-content>
+      <ion-button *ngIf="this.adding_members == true" color="success" expand="block">Check Profile and Send Request</ion-button>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -36,7 +36,7 @@ export class MemberActiveZonePage {
           this.check_post = true;
           for(var i = 0; i<data.length; i++) {
             this.post_ids += data[i].id;
-            this.post_ids += ',';              
+            this.post_ids += ',';
           }
           var postdata = {
             sorted_post_id: this.post_ids,
@@ -46,7 +46,7 @@ export class MemberActiveZonePage {
             console.log(this.post_image);
           });              
         }
-        this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=&user_id=${this.member_id}&active=`).subscribe((data:any = [{}]) => {
+        this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=&user_id=${this.member_id}&active=true`).subscribe((data:any = [{}]) => {
           if(data.length>0) {
             this.other_check_post = true;
             for(var i = 0; i<data.length; i++) {
@@ -68,5 +68,9 @@ export class MemberActiveZonePage {
 
   changePage(post_id) {
     this.router.navigate([`/user/active-zone/group-chat/${post_id}`])
+  }
+
+  openProgessBar(post_id) {
+    this.router.navigate([`/user/active-zone/progress-bar/${post_id}`])
   }
 }

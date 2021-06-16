@@ -55,7 +55,7 @@ export class HelpPage implements OnInit {
         {
           text: 'Ok',
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'alert-button',
         }
       ]
     });
@@ -65,14 +65,14 @@ export class HelpPage implements OnInit {
 
   async presentAlertThanks() {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom',
+      cssClass: 'alert',
       header: 'Thank You',
       message: 'We will get back to you <strong>Shortly</strong>!!!',
       buttons: [
         {
           text: 'Ok',
           role: 'cancel',
-          cssClass: 'secondary'
+          cssClass: 'alert-button'
         }
       ]
     });

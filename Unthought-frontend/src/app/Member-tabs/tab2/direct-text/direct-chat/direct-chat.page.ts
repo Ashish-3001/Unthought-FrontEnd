@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -27,6 +27,7 @@ export class DirectChatPage implements OnInit {
     private http: HttpClient,
     private auth: AuthenticationService,
     private acitivatedRoute: ActivatedRoute,
+    private router: Router,
   ) { 
     this.acitivatedRoute.paramMap.subscribe(paraMap => {
       this.auth.data.then((value) => {
@@ -61,6 +62,7 @@ export class DirectChatPage implements OnInit {
   }
 
   ionViewDidLeave() {
+    this.socket.close();
     this.message = undefined;
     this.limit = 0;
     this.start_limit = 0;
@@ -99,6 +101,14 @@ export class DirectChatPage implements OnInit {
           'createdAt': chatDataMsg.createdAt,
           'message': chatDataMsg.message, 
         },]
+
+        this.socket.send((JSON.stringify({
+          'status': true,
+          'my_id': this.user_data[0].id,
+          'connect_id': this.connect_id,
+          'message': chatDataMsg.message,
+        })));
+        
       }
       else {
         this.message.push({
@@ -179,5 +189,10 @@ export class DirectChatPage implements OnInit {
     console.log("load");
     this.getTexts(5);
     event.target.complete();
+  }
+
+  backtoChatlist() {
+    
+    this.router.navigate(['/user/active-zone/direct-text/']);
   }
 }

@@ -1,9 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>saved</ion-title>
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div class="ion-text-center" class="heading" >
+    <h3> Saved Projects </h3>
+  </div>
+
+  <ion-card *ngFor = " let user of this.saved_posts; let i = index" class="post-card">
+    <ion-row >
+      <ion-col size="3" class="post_header">
+        <ion-img *ngIf='this.dp_image_dict[user.fields.admin_id]' [src]='this.dp_image_dict[user.fields.admin_id]' class="img" ></ion-img>
+      </ion-col>
+      <ion-col size="9" class="post_header">
+        <ion-card-header>
+          <ion-card-title>
+            {{ user.fields.admin_name }}
+          </ion-card-title>
+          <ion-card-subtitle>
+            {{ user.fields.admin_designation }}
+          </ion-card-subtitle>
+        </ion-card-header>
+      </ion-col>
+    </ion-row>
+    <ion-card-content class="post_content">
+      <ion-row>
+        <ion-col>
+          <ion-text class="post_title"> <u><b> Project Title</b></u>: {{ user.fields.title_of_post }}</ion-text> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-text class="post_desc"> <u><b> About</b></u>: {{ user.fields.short_desc }} </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="post_img_row">
+        <ion-col>
+          <ion-img  [src]='this.image_dict[user.pk]' class="post_img" ></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2.5">
+          <ion-icon  (click)='like(user.pk, user.fields.title_of_post)' *ngIf='this.liked_post.includes(user.pk) == false' name="thumbs-up-outline" size ="large"></ion-icon>
+          <ion-icon  (click)='dislike(user.pk)' *ngIf='this.liked_post.includes(user.pk) == true' name="thumbs-up" size ="large" class="like-save-saerch"></ion-icon>
+        </ion-col>
+        <ion-col size="2.5">
+          <ion-icon (click)='unsaved(user.pk,i)' name="bookmark" size ="large" class="like-save-saerch"></ion-icon>
+        </ion-col>
+        <ion-col size="2.5">
+          <ion-icon name="share-social-outline" size ="large" ></ion-icon>
+        </ion-col>
+        <ion-col size="4.5">
+          <ion-row>
+            <ion-col size="8">
+              <ion-button [routerLink] = "['/user/homee/', user.pk]" class="read_more" color="dark" shape="round" size="small">read more</ion-button> 
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
 
 </ion-content>

@@ -1,0 +1,40 @@
+.tab-bar {
+    --background: black;
+    --border-color: white;
+}
+
+.heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    font-style: initial;  
+}
+
+.notifications-icon{
+    color: red;
+}
+
+.details_card_title {
+    text-align: center;
+}
+
+.details_card_subtitle{
+    display: inline-block;
+}
+
+.details_card_subtitle_saved {
+    text-align: right;
+}
+
+.details_card {
+    color: black;
+}
+
+.pro_img {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 200px;
+    width: 100%;
+    border-width: 4px;
+    border-color: white;
+}

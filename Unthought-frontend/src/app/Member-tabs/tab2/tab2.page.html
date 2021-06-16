@@ -3,7 +3,7 @@
     <ion-title>
       <div class="heading">Unthought</div>
     </ion-title>
-    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -33,16 +33,26 @@
           <h3> Your Projects </h3>
         </div>
 
-        <ion-card *ngFor = " let user of this.post_image let i = index" (click)="changePage(user.fields.post_id)" class="card">
+        <ion-card *ngFor = " let user of this.post_image let i = index"  class="card">
           <ion-card-content>
             <ion-row>
-              <ion-col size="3">
+              <ion-col size="3" (click)="changePage(user.fields.post_id)">
                 <ion-img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp" class="img"></ion-img>
               </ion-col>
               <ion-col size="9">
-                <div class="ion-margin" class="ion-padding" class="div">
+                <div class="ion-margin" class="ion-padding" class="div" (click)="changePage(user.fields.post_id)">
                   {{ user.fields.post_title }}
                 </div>
+                <ion-list class="progess_bar_list" (click)="openProgessBar(user.fields.post_id)">
+                  <ion-list-header class="progess_bar_header">
+                    Progress Bar
+                  </ion-list-header>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 1" color="danger" value="0.2" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 2" color="danger" value="0.4" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 3" color="danger" value="0.6" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 4" color="danger" value="0.8" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 5" color="danger" value="1" class="progess_bar"></ion-progress-bar>
+                </ion-list>
               </ion-col>
             </ion-row>
           </ion-card-content>
@@ -52,16 +62,26 @@
           <h3> Colabration </h3>
         </div>
 
-        <ion-card *ngFor = " let user of this.other_post_image let i = index" (click)="changePage(user.fields.post_id)" class="card">
+        <ion-card *ngFor = " let user of this.other_post_image let i = index" class="card">
           <ion-card-content>
             <ion-row>
-              <ion-col size="3">
+              <ion-col size="3" (click)="changePage(user.fields.post_id)">
                 <ion-img [src]=" 'http://127.0.0.1:8000/media/' + user.fields.post_dp" class="img"></ion-img>
               </ion-col>
               <ion-col size="9">
-                <div class="ion-margin" class="ion-padding" class="div">
+                <div class="ion-margin" class="ion-padding" class="div" (click)="changePage(user.fields.post_id)">
                   {{ user.fields.post_title }}
                 </div>
+                <ion-list class="progess_bar_list" (click)="openProgessBar(user.fields.post_id)">
+                  <ion-list-header class="progess_bar_header">
+                    Progress Bar
+                  </ion-list-header>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 1" color="danger" value="0.2" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 2" color="danger" value="0.4" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 3" color="danger" value="0.6" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 4" color="danger" value="0.8" class="progess_bar"></ion-progress-bar>
+                  <ion-progress-bar *ngIf="user.fields.progress_status == 5" color="danger" value="1" class="progess_bar"></ion-progress-bar>
+                </ion-list>
               </ion-col>
             </ion-row>
           </ion-card-content>

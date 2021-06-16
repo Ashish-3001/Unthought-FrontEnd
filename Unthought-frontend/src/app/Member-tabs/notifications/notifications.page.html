@@ -1,0 +1,165 @@
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <ion-col offset="1" size="5">
+      <ion-chip *ngIf="this.state != 1"class="chip" (click)="this.state =1">
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        <ion-label>Join requests</ion-label>
+      </ion-chip>
+      <ion-chip *ngIf="this.state == 1" class="chip-active">
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        <ion-label>Join requests</ion-label>
+      </ion-chip>
+    </ion-col>
+    <ion-col offset="1" size="5">
+      <ion-chip *ngIf="this.state != 2" class="chip" (click)="this.state =2">
+        <ion-icon name="person-add"></ion-icon>
+        <ion-label>Your Project</ion-label>
+      </ion-chip>
+      <ion-chip *ngIf="this.state == 2" class="chip-active">
+        <ion-icon name="person-add"></ion-icon>
+        <ion-label>Your Project</ion-label>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+  
+  <div *ngIf="this.state == 1">
+    <ion-card *ngFor = " let user of this.join_posts; let i = index" class="post-card">
+      <ion-row>
+        <ion-col>
+          <div class="which_project"> You have been Requested to be a part of this Project !! </div>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col size="3" class="post_header">
+          <ion-img *ngIf='this.dp_image_dict[user.fields.admin_id]' [src]='this.dp_image_dict[user.fields.admin_id]' class="img" ></ion-img>
+        </ion-col>
+        <ion-col size="9" class="post_header">
+          <ion-card-header>
+            <ion-card-title>
+              {{ user.fields.admin_name }}
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{ user.fields.admin_designation }}
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+      <ion-card-content class="post_content">
+        <ion-row>
+          <ion-col>
+            <ion-text class="post_title"> <u><b> Project Title</b></u>: {{ user.fields.title_of_post }}</ion-text> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-text class="post_desc"> <u><b> About</b></u>: {{ user.fields.short_desc }} </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row class="post_img_row">
+          <ion-col>
+            <ion-img  [src]='this.image_dict[user.pk]' class="post_img" ></ion-img>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="this.read_more_post.includes(user.pk) == true" class="details_contents">
+          <ion-row>
+            <ion-col>
+              <b>About Project:</b> {{ user.fields.long_desc }} <br><br>
+              <b>Goal of the Project:</b> {{ user.fields.goal_of_project }} <br>
+              <b>Work Done till now:</b> {{ user.fields.workdone }} <br><br>
+              Looking For:<br>
+              1) <b>{{ user.fields.requirement1 }}</b><br>
+              2) <b>{{ user.fields.requirement2 }}</b><br>
+              3) <b>{{ user.fields.requirement3 }}</b><br>
+              4) <b>{{ user.fields.requirement4 }}</b>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-col size="2" class="bottom">
+            <ion-icon  (click)='like(user.pk, user.fields.title_of_post)' *ngIf='this.liked_post.includes(user.pk) == false' name="thumbs-up-outline" size ="large" class="icon"></ion-icon>
+            <ion-icon  (click)='dislike(user.pk)' *ngIf='this.liked_post.includes(user.pk) == true' name="thumbs-up" size ="large" class="like-save-saerch"></ion-icon>
+          </ion-col>
+          <ion-col size="2" class="bottom">
+            <ion-icon (click)='saved(user.pk, user.fields.title_of_post)' *ngIf='this.saved_post.includes(user.pk) == false' name="bookmark-outline" size ="large" class="icon"></ion-icon>
+            <ion-icon (click)='unsaved(user.pk)' *ngIf='this.saved_post.includes(user.pk) == true' name="bookmark" size ="large" class="like-save-saerch"></ion-icon>
+          </ion-col>
+          <ion-col size=2.5 class="bottom">
+            <ion-button color="danger" expand="block" (click)="this.presentAlertrejectPost(user.pk,i)"> Reject </ion-button>
+          </ion-col>
+          <ion-col size=2.5 class="bottom">
+            <ion-button color="success" expand="block" (click)="this.presentAlertacceptPost(user.pk,i)"> Accept </ion-button>
+          </ion-col>
+          <ion-col size="3" class="bottom">
+              <ion-button *ngIf="this.read_more_post.includes(user.pk) == false" expand="block" (click)="readMorePost(user.pk, true)"> Read more</ion-button>
+              <ion-button *ngIf="this.read_more_post.includes(user.pk) == true" expand="block" (click)="readMorePost(user.pk, false)"> Read less</ion-button> 
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="this.state == 2">
+    <ion-card *ngFor = " let user of this.requested_members let i = index" class="post-card">
+      <ion-row>
+        <ion-col>
+          <div class="which_project"> Requested to be a part of {{ this.requested_projects[user.pk] }}!! </div>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col size="3" class="post_header">
+          <ion-img *ngIf='this.MembersDp[user.pk]' [src]='this.MembersDp[user.pk]' class="img" ></ion-img>
+        </ion-col>
+        <ion-col size="9" class="post_header">
+          <ion-card-header>
+            <ion-card-title>
+              {{ user.fields.Member_name }}
+            </ion-card-title>
+            <ion-card-subtitle>
+              username: {{ user.fields.unique_name }}
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+      <ion-card-content class="details_contents">
+        <b>Primary Domain:</b> {{ user.fields.pri_specification_main }} <br>
+        <b>Primary Specialization:</b> {{ user.fields.pri_specification_submain }} <br>
+        <b>Secondary Domain:</b> {{ user.fields.sec_specification_main }} <br>
+        <b>Secondary Specialization:</b> {{ user.fields.sec_specification_submain }}
+        <div *ngIf="this.read_more_member.includes(user.pk) == true">
+          <div *ngIf = "this.user.fields.working_status == true">
+            <b>Working Status:</b> {{ this.user_data[0].company_name }} <br>
+          </div>
+          <div *ngIf = "this.user.fields.working_status == false">
+            <b>College:</b> {{ this.user_data[0].college_name }} <br>
+            <b>Course:</b> {{ this.user_data[0].course }} <br>
+          </div>
+          <b>Date Of Birth:</b> {{ this.user_data[0].dob }} <br>
+          <b>Gender:</b> {{ this.user_data[0].gender }} <br>
+          Discription: <b> {{ this.user.fields.desc }}</b> 
+        </div>
+      </ion-card-content>
+      <ion-row>
+        <ion-col size=4>
+          <ion-button color="danger" expand="block" (click)="this.presentAlertrejectUser(user.pk,i)"> Reject </ion-button>
+        </ion-col>
+        <ion-col size=4>
+          <ion-button color="success" expand="block" (click)="this.presentAlertacceptUser(user.pk,i)"> Accept </ion-button>
+        </ion-col>
+        <ion-col size=4>
+          <ion-button *ngIf="this.read_more_member.includes(user.pk) == false" expand="block" (click)="readMoreUser(user.pk, true)"> Read more</ion-button>
+          <ion-button *ngIf="this.read_more_member.includes(user.pk) == true" expand="block" (click)="readMoreUser(user.pk, false)"> Read less</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>  
+  </div>
+  
+</ion-content>

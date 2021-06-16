@@ -4,9 +4,6 @@
     --border-color: white;
 }
 
-.slides {
-    height: 148px;
-}
 
 .heading{
     text-align: center;
@@ -121,4 +118,28 @@
     color: white;
     padding: 0px;
     margin: 0px;
+}
+
+.slides {
+    height: 150px;
+    padding: 0px;
+}
+
+
+.slide_img {
+    object-fit: fill;
+    height: 130px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.trending_text {
+    object-fit: fill;
+    background: #000;
+    color: white;
+    font-size: 20px;
+    text-align: left;
+    font-weight: 600;
+    padding: 5px;
 }

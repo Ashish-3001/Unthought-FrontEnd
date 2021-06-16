@@ -24,6 +24,9 @@ export class DirectTextPage implements OnInit {
 
   ngOnInit() {
 
+    this.http.get(`http://127.0.0.1:8000/empty_chat_delete/`).subscribe((data) => {
+      console.log(data);
+    });
     this.auth.data.then((value) => {
       this.user_data = value;
       this.member_id = this.user_data[0].id;
@@ -64,4 +67,13 @@ export class DirectTextPage implements OnInit {
   changePage(connect_id) {
     this.router.navigate([`/user/active-zone/direct-text/${connect_id}`])
   }
+
+  ionViewWillLeave(){
+    this.user_data = undefined;
+    this.member_id = undefined;
+    this.chatMembers = undefined;
+    this.chatMembers_ids= '';
+    this.chatMembersDp = {};
+  }
+  
 }

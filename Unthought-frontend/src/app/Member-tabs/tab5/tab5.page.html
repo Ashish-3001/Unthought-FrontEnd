@@ -3,7 +3,7 @@
     <ion-title>
       <div class="heading">Unthought</div>
     </ion-title>
-    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" ></ion-icon>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -17,6 +17,27 @@
         <ion-img [src]='this.member_dp' class="img" ></ion-img>
       </ion-col>
     </ion-row>
+
+    <div *ngIf="this.adding_member == true">
+      <ion-row>
+        <ion-col>
+          <ion-button *ngIf="this.your_post == true && this.request_sent == false" color="success" expand="block" (click)="this.presentAlertMemberAlready()"> Already member</ion-button>
+          <ion-button *ngIf="this.your_post == false && this.request_sent == false" color="success" expand="block" (click)="RequestJoin()">Send Request</ion-button>
+          <ion-button *ngIf="this.request_sent == true && this.your_post == false" color="success" expand="block" (click)="this.presentAlertSentAlready()">Request Sent</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf = "this.user_data != undefined && this.own_profile == false">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="startChat()">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+            Start Chat
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
 
     <ion-row>
       <ion-col>
@@ -48,6 +69,7 @@
         </ion-card>
 
         <ion-card class="details_card" *ngIf = "this.user_data != undefined && this.own_profile == false" >
+
           <ion-card-header>
             <ion-card-title class="details_card_title">
               {{ this.user_data.Member_name }}

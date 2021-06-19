@@ -22,7 +22,7 @@ export class AppComponent {
       if(Capacitor.isPluginAvailable('SplashScreen')) {
         Plugins.SplashScreen.hide();
       }
-      this.authService.check();
+      //this.authService.check();
     });
 
   }

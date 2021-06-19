@@ -50,6 +50,8 @@ const routes: Routes = [
     path: 't-and-c/:type',
     loadChildren: () => import('./t-and-c/t-and-c.module').then( m => m.TAndCPageModule)
   },
+
+
 ];
 @NgModule({
   imports: [

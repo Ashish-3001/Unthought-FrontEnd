@@ -37,7 +37,7 @@ const routes: Routes = [
       },
       {
         path: 'active-zone/edit-post/:post_id',
-        loadChildren: () => import('./tab2/edit-post/edit-post.module').then( m => m.EditPostPageModule)
+        loadChildren: () => import('./tab2/post-edit/post-edit.module').then( m => m.PostEditPageModule)
       },
       {
         path: 'post',

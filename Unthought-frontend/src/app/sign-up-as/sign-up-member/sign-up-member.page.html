@@ -9,57 +9,75 @@
 
 <ion-content [fullscreen]="true">
   
+  
+  <div class="heading2">
+    Make Your Profile
+  </div>
+
   <div *ngIf="this.slide_no == 1">
-    <form #form="ngForm">
-      <ion-grid>
 
+    <form #form="ngForm" (ngSubmit)="Slide1_submit(form)">
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div class="req">*Required</div>
+            </ion-col>
+          </ion-row>
+          
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
+                <ion-item>
+                  <ion-label position="floating">Unique Name*</ion-label>
+                  <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
+                  <div class="warn"> Please Enter Your Unique Name. Unique name can have upper-case, lower-case and special characters !</div>
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
+                <ion-item>
+                  <ion-label position="floating">Password*</ion-label>
+                  <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
+                  <div class="warn"> Please Enter Your Password. Password can have upper-case, lower-case and special characters !</div>
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <ion-item>
+                <ion-label position="floating">Phone Number*</ion-label>
+                  <ion-input type = 'text' inputmode="numeric" ngModel name ="phonenumber" required maxlength="10" minlength="10" #phonenumberCtrl="ngModel" ></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!phonenumberCtrl.valid && phonenumberCtrl.touched" lines="none">
+                <div class="warn">  Please Enter Valid Phone Number</div>
+              </ion-item>  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div>
         <ion-row>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div class="req">*Required</div>
+          <ion-col>
+            <ion-button expand="block" color="success" type="submit" [disabled]="!form.valid" ><!-- s -->
+              Next
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
           </ion-col>
         </ion-row>
-        
-        <ion-row color="primary" justify-content-center>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div padding>
-              <ion-item>
-                <ion-label position="floating">Unique Name*</ion-label>
-                <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
-              </ion-item>
-              <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
-                <div class="warn"> Please Enter Your Unique Name. Unique name can have upper-case, lower-case and special characters !</div>
-              </ion-item>
-            </div>
-          </ion-col>
-        </ion-row>
-
-        <ion-row color="primary" justify-content-center>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div padding>
-              <ion-item>
-                <ion-label position="floating">Password*</ion-label>
-                <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
-              </ion-item>
-              <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
-                <div class="warn"> Please Enter Your Password. Password can have upper-case, lower-case and special characters !</div>
-              </ion-item>
-            </div>
-          </ion-col>
-        </ion-row>
-
-        <ion-row color="primary" justify-content-center>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <ion-item>
-              <ion-label position="floating">Phone Number*</ion-label>
-                <ion-input type = 'text' inputmode="numeric" ngModel name ="phonenumber" required maxlength="10" minlength="10" #phonenumberCtrl="ngModel" ></ion-input>
-            </ion-item>
-            <ion-item *ngIf="!phonenumberCtrl.valid && phonenumberCtrl.touched" lines="none">
-              <div class="warn">  Please Enter Valid Phone Number</div>
-            </ion-item>  
-          </ion-col>
-        </ion-row>
-
-      </ion-grid>
+      </div>
+      
     </form>
   </div>
 
@@ -130,6 +148,7 @@
               </ion-item>
             </ion-col>
           </ion-row>
+
           <ion-row color="primary" justify-content-center>
             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
               <div padding>
@@ -143,6 +162,7 @@
               </div>
             </ion-col>
           </ion-row>
+
           <ion-row color="primary" justify-content-center>
             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
               <div padding>
@@ -156,6 +176,7 @@
               </div>
             </ion-col>
           </ion-row>
+
           <ion-row color="primary" justify-content-center>
             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
               <ion-item>
@@ -274,7 +295,8 @@
         </div>
     </ion-slide>
     
-    <ion-slide>
+    <div>
+
         <h2>slide 3</h2>
         <div>
           <ion-grid>
@@ -285,6 +307,7 @@
              </ion-row>
           </ion-grid>        
         </div>
-    </ion-slide> 
-  </ion-slides>
+
+      </div> 
+
 </ion-content>

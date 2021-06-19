@@ -38,7 +38,6 @@ export class MemberPostPage {
 
   constructor(
     private http: HttpClient,
-    public menuCtrl: MenuController, 
     public alertController: AlertController,
     private auth: AuthenticationService,
     private router: Router,

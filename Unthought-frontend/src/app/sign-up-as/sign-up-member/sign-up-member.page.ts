@@ -14,6 +14,10 @@ import { Router } from '@angular/router';
 export class SignUpMemberPage implements OnInit {
   
   form: FormGroup;
+  slide_no: number = 1;
+
+  new_user:any;
+  new_member: object = {};
 
   primary_toggle: boolean = false;
   pri_specification_main: any;
@@ -25,26 +29,23 @@ export class SignUpMemberPage implements OnInit {
   sec_specification_sub: any;
   secoundary_sub_toggle:  boolean = false;
 
-  constructor(public menuCtrl: MenuController, public alertController: AlertController,private router: Router,) { }
+  constructor(
+    public alertController: AlertController,
+    private router: Router,) { }
 
   ngOnInit() {
   }
 
+  Slide1_submit(form: NgForm) {
+    this.new_user["user_name"] = form.value
+  }
+
   ionViewWillEnter() {
-    this.menuCtrl.enable(false);
+
   }
 
   onSubmit(form: NgForm) {
-    var postdata = {
-      unique_name: form.value.Uname,
-      Member_name: form.value.Mname,
-      gender: form.value.gender,
-      dob: form.value.dob,
-      phone_number: form.value.Uname,   
-      email: form.value.email,
-      working_status: form.value.workstatus,
-      company_name: form.value.campany,
-    }
+    
   }
 
   primarySelcted(type) {

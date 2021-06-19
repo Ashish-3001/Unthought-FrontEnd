@@ -36,6 +36,10 @@ const routes: Routes = [
         loadChildren: () => import('./tab2/direct-text/direct-chat/direct-chat.module').then( m => m.DirectChatPageModule)
       },
       {
+        path: 'active-zone/edit-post/:post_id',
+        loadChildren: () => import('./tab2/edit-post/edit-post.module').then( m => m.EditPostPageModule)
+      },
+      {
         path: 'post',
         loadChildren: () => import('./tab3/tab3.module').then(m => m.MemberPostPageModule)
       },

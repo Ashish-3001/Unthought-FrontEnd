@@ -13,6 +13,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class MemberProfilePage implements OnInit {
 
   own_profile: boolean;
+  own_data: any;
   member_id: any;
   user_data: any;
   member_dp: any;
@@ -87,7 +88,7 @@ export class MemberProfilePage implements OnInit {
       }
       else {  
         this.auth.data.then((value) => {
-          this.user_data = value;
+          this.own_data = value;
 
           const member_id = paraMap.get('member_id');
           this.member_id = member_id;
@@ -97,7 +98,7 @@ export class MemberProfilePage implements OnInit {
             this.add_post_id = post_id;
             this.adding_member = true;
             console.log(this.add_post_id);
-            console.log(this.user_data[0].id);
+            console.log(this.own_data[0].id);
 
             this.http.get(`http://127.0.0.1:8000/ProjectMember/?post_id=${this.add_post_id}&user_id=${this.member_id}&active=true`).subscribe( (data:any) => {
                 var n: number = data.length;
@@ -178,7 +179,7 @@ export class MemberProfilePage implements OnInit {
         icon: 'bookmark-outline',
         handler: () => {
           console.log("Saved clicked");
-          this.router.navigate([`user/profile/saved/${this.member_id}`]);
+          this.router.navigate([`user/pro/saved/${this.member_id}`]);
         }
       }, {
         text: 'Edit Profile',
@@ -212,8 +213,7 @@ export class MemberProfilePage implements OnInit {
         text: 'Log out',
         icon: 'log-out-outline',
         handler: () => {
-          console.log('Log out clicked');
-          this.auth.logout();
+          this.presentAlertLogOut();
         }
       }, {
         text: 'Cancel',
@@ -359,6 +359,28 @@ export class MemberProfilePage implements OnInit {
 
   changePage(post_id) {
     this.router.navigate([`/user/homee/${post_id}`])
+  }
+
+  async presentAlertLogOut() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Alert !',
+      message: '<strong>Are you sure you want to Log out of this App ? </strong> ??',
+      buttons: [
+        {
+          text: 'cancel',
+          role: 'cancel',
+          cssClass: 'alert-button',
+        }, {
+        text: 'Log Out',
+        handler: () => {
+          this.auth.logout();
+        }
+      }]
+    });
+
+    await alert.present();
+
   }
 
 }

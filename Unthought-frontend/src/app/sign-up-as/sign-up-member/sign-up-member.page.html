@@ -1,150 +1,189 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sign-up-member</ion-title>
+<ion-header >
+  <ion-toolbar class="tab-bar">
+    <ion-title>
+      <div class="heading">Unthought</div>
+    </ion-title>
+    <ion-icon name="notifications" slot="end" size ="large" class="notifications-icon" [routerLink]="['/user/notifications']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-slides pager="true" class="ion-slides">
-    <ion-slide>
-      <form #form="ngForm">
-        <div>
-          <ion-grid>
-            <ion-row>
-             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-               <div class="req">*Required</div>
-             </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                <div padding>
-                 <ion-item>
-                   <ion-label position="floating">Unique Name*</ion-label>
-                   <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
-                 </ion-item>
-                 <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
-                   <div class="warn"> Please Enter Your Unique Name</div>
-                 </ion-item>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-               <div padding>
-                  <ion-item>
-                   <ion-label position="floating">Member Name*</ion-label>
-                   <ion-input type = 'text' ngModel name ="Mname" required #MnameCtrl="ngModel"></ion-input>
-                  </ion-item>
-                  <ion-item *ngIf="!MnameCtrl.valid && MnameCtrl.touched" lines="none">
-                   <div class="warn"> Please Enter Your Name</div>
-                  </ion-item>
-               </div>
-              </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                <div padding>  
-                  <ion-item>
-                    <ion-label>Gender:*</ion-label>
-                      <ion-select interface="popover"ngModel name ="gender" required #genderCtrl="ngModel">
-                      <ion-select-option value="M">Male</ion-select-option>
-                      <ion-select-option value="F">Female</ion-select-option>
-                      <ion-select-option value="O">Others</ion-select-option>
-                    </ion-select>
-                  </ion-item> 
-                  <ion-item *ngIf="!genderCtrl.valid && genderCtrl.touched" lines="none">
-                    <div class="warn">  Please Enter Your Gender</div>
-                  </ion-item>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+  
+  <div *ngIf="this.slide_no == 1">
+    <form #form="ngForm">
+      <ion-grid>
+
+        <ion-row>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div class="req">*Required</div>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div padding>
+              <ion-item>
+                <ion-label position="floating">Unique Name*</ion-label>
+                <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
+                <div class="warn"> Please Enter Your Unique Name. Unique name can have upper-case, lower-case and special characters !</div>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div padding>
+              <ion-item>
+                <ion-label position="floating">Password*</ion-label>
+                <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
+                <div class="warn"> Please Enter Your Password. Password can have upper-case, lower-case and special characters !</div>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <ion-item>
+              <ion-label position="floating">Phone Number*</ion-label>
+                <ion-input type = 'text' inputmode="numeric" ngModel name ="phonenumber" required maxlength="10" minlength="10" #phonenumberCtrl="ngModel" ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!phonenumberCtrl.valid && phonenumberCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Valid Phone Number</div>
+            </ion-item>  
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+  </div>
+
+  <div *ngIf="this.slide_no == 2">
+
+    <form #form="ngForm">
+      <div>
+        <ion-grid>
+
+          <ion-row>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div class="req">*Required</div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
                 <ion-item>
-                  <ion-label position="floating">Date of Birth*</ion-label>
-                  <ion-input type = 'text' ngModel name ="dob" required #dobCtrl="ngModel"></ion-input>
+                  <ion-label position="floating">Your Full Name*</ion-label>
+                  <ion-input type = 'text' ngModel name ="Mname" required #MnameCtrl="ngModel"></ion-input>
                 </ion-item>
-                <ion-item *ngIf="!dobCtrl.valid && dobCtrl.touched" lines="none">
-                  <div class="warn">Please Enter Your Date Of Birth</div>
+                <ion-item *ngIf="!MnameCtrl.valid && MnameCtrl.touched" lines="none">
+                  <div class="warn"> Please Enter Your Name</div>
                 </ion-item>
-             </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>  
                 <ion-item>
-                 <ion-label position="floating">Phone Number*</ion-label>
-                   <ion-input type = 'text' inputmode="numeric" ngModel name ="phonenumber" required maxlength="10" minlength="10" #phonenumberCtrl="ngModel" ></ion-input>
+                  <ion-label>Gender:*</ion-label>
+                    <ion-select interface="popover"ngModel name ="gender" required #genderCtrl="ngModel">
+                    <ion-select-option value="male">Male</ion-select-option>
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="other">Others</ion-select-option>
+                  </ion-select>
+                </ion-item> 
+                <ion-item *ngIf="!genderCtrl.valid && genderCtrl.touched" lines="none">
+                  <div class="warn">  Please Enter Your Gender</div>
                 </ion-item>
-               <ion-item *ngIf="!phonenumberCtrl.valid && phonenumberCtrl.touched" lines="none">
-                  <div class="warn">  Please Enter Valid Phone Number</div>
-               </ion-item>  
-             </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-               <ion-item>
-                 <ion-label position="floating">Email Address*</ion-label>
-                 <ion-input type = 'text' ngModel name ="email" required #emailCtrl="ngModel"></ion-input>
-               </ion-item>
-               <ion-item *ngIf="!emailCtrl.valid && emailCtrl.touched" lines="none">
-                 <div class="warn">  Please Enter Email Address</div>
-               </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-               <div padding>
-                  <ion-item>
-                   <ion-label position="floating">Working Status*</ion-label>
-                   <ion-input type = 'text' ngModel name ="workstatus" required #workstatusCtrl="ngModel"></ion-input>
-                   </ion-item>
-                  <ion-item *ngIf="!workstatusCtrl.valid && workstatusCtrl.touched" lines="none">
-                   <div class="warn">  Please Enter Working Status</div>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <ion-item>
+                <ion-label position="floating">Date of Birth*</ion-label>
+                <ion-input type = 'text' ngModel name ="dob" required #dobCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!dobCtrl.valid && dobCtrl.touched" lines="none">
+                <div class="warn">Please Enter Your Date Of Birth</div>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <ion-item>
+                <ion-label position="floating">Email Address*</ion-label>
+                <ion-input type = 'text' ngModel name ="email" required #emailCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!emailCtrl.valid && emailCtrl.touched" lines="none">
+                <div class="warn">  Please Enter Email Address</div>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
+                <ion-item>
+                  <ion-label position="floating">Working Status*</ion-label>
+                  <ion-input type = 'text' ngModel name ="workstatus" required #workstatusCtrl="ngModel"></ion-input>
                   </ion-item>
-                </div>
-             </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                <div padding>
-                  <ion-item>
-                    <ion-label position="floating">Course*</ion-label>
-                    <ion-input type = 'text' ngModel name ="course" required #courseCtrl="ngModel"></ion-input>
-                 </ion-item>
-                 <ion-item *ngIf="!courseCtrl.valid && courseCtrl.touched" lines="none">
-                   <div class="warn">  Please Enter Your Course</div>
-                 </ion-item>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <ion-item *ngIf="!workstatusCtrl.valid && workstatusCtrl.touched" lines="none">
+                  <div class="warn">  Please Enter Working Status</div>
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
                 <ion-item>
-                 <ion-label position="floating">Campany Name*</ion-label>
-                 <ion-input type = 'text' ngModel name ="campany" required #campanyCtrl="ngModel"></ion-input>
+                  <ion-label position="floating">Course*</ion-label>
+                  <ion-input type = 'text' ngModel name ="course" required #courseCtrl="ngModel"></ion-input>
                 </ion-item>
-                <ion-item *ngIf="!campanyCtrl.valid && campanyCtrl.touched" lines="none">
-                 <div class="warn">  Please Enter Campany Name</div>
+                <ion-item *ngIf="!courseCtrl.valid && courseCtrl.touched" lines="none">
+                  <div class="warn">  Please Enter Your Course</div>
                 </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                <ion-item>
-                  <ion-label position="floating">College Name*</ion-label>
-                  <ion-input type = 'text' ngModel name ="college" required #collegeCtrl="ngModel"></ion-input>
-                </ion-item>
-               <ion-item *ngIf="!collegeCtrl.valid && collegeCtrl.touched" lines="none">
-                 <div class="warn">  Please Enter college Name</div>
-               </ion-item>
-             </ion-col>
-            </ion-row>
-          </ion-grid> 
-        </div>
-      </form>
-    </ion-slide>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <ion-item>
+                <ion-label position="floating">Campany Name*</ion-label>
+                <ion-input type = 'text' ngModel name ="campany" required #campanyCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!campanyCtrl.valid && campanyCtrl.touched" lines="none">
+                <div class="warn">  Please Enter Campany Name</div>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <ion-item>
+                <ion-label position="floating">College Name*</ion-label>
+                <ion-input type = 'text' ngModel name ="college" required #collegeCtrl="ngModel"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!collegeCtrl.valid && collegeCtrl.touched" lines="none">
+                <div class="warn">  Please Enter college Name</div>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid> 
+      </div>
+    </form>
+  </div>
     
-    <ion-slide>
+    <div>
         <div> 
           <ion-grid>
             <ion-row>
@@ -152,7 +191,7 @@
                 <ion-card class="primary_select" (click)="this.primary_toggle = true">
                   <div class="pry">Select Primary Domain</div>
                 </ion-card>
-                <ion-card *ngIf="this.primary_toggle == true">
+                <div *ngIf="this.primary_toggle == !this.primary_toggle">
                   <ion-chip class="primary2_select" (click)="primarySelcted('software development')"> Software Development</ion-chip> <br>
                   <ion-card class="primarysub" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'software development' ">
                     <ion-chip (click)="primarysubSelcted('web development')"> Web Development</ion-chip>
@@ -188,7 +227,7 @@
                   <ion-chip class="primary2_select" (click)="primarySelcted('legal')"> Legal</ion-chip>
                   <ion-chip class="primary2_select" (click)="primarySelcted('finance')"> Finance</ion-chip>
                   <ion-chip class="primary2_select" (click)="primarySelcted('general')"> General</ion-chip>
-                </ion-card>
+                </div>
                 
                 <ion-card class="secoundary_select" (click)="this.secoundary_toggle = true">
                   <div class="pry">Select Secoundary Domain</div>

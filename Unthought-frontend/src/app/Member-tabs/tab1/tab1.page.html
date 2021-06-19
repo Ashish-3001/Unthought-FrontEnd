@@ -114,13 +114,15 @@
         <ion-text class="interested"><h3>People you might interested in</h3></ion-text>
         <div class="ppl">
           <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-            <ion-slide *ngFor="let user of this.instrested_people; let i = index" style="width: 175px; height: 250px; border: 2px solid #f8f8f8" (click)="chagepage(user.pk)">
+            <div *ngFor="let user of this.instrested_people; let i = index">
+            <ion-slide  style="width: 175px; height: 250px; border: 2px solid #f8f8f8" (click)="chagepage(user.pk)"><!-- *ngIf="user.pk != this.user_data[0].id" -->
               <ion-col>
                 <ion-label class="instrested_people_name"><b>{{ user.fields.Member_name }}</b></ion-label>
                 <ion-list class="instrested_people_des">{{ user.fields.pri_specification_submain }} and {{ user.fields.sec_specification_submain }}</ion-list>
                 <ion-img style="pointer-events:none" [src]='this.instrested_people_img_dict[user.pk]' class="instrested_people_img"></ion-img>
               </ion-col>
             </ion-slide>
+            </div>
           </ion-slides>
         </div>
       </ion-col>

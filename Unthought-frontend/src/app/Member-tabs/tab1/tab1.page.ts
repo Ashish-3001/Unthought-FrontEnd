@@ -35,13 +35,13 @@ export class MemberHomePage {
   ngOnInit() {
     this.auth.data.then((value) => {
       this.user_data = value;
-      console.log(this.user_data[0].User_id);
       var postdata = {
         pri_specification_submain: this.user_data[0].pri_specification_submain,
         sec_specification_submain: this.user_data[0].sec_specification_submain,
         pri_specification_main: this.user_data[0].pri_specification_main,
         sec_specification_main: this.user_data[0].sec_specification_main,
       }
+      console.log(postdata);
       this.http.post('http://127.0.0.1:8000/sorted-posts/', postdata).subscribe( (data:any) => {
         this.sortedData = data;
         console.log(data);
@@ -72,10 +72,10 @@ export class MemberHomePage {
           }
           console.log(this.dp_image_dict);
           this.http.get('http://127.0.0.1:8000/Trending_post/').subscribe((data) => {
-            var postdata_img = {
-              sorted_post_id: data.toString(),
+            var postdata_img1 = {
+              sorted_post_id: data.toString().split("").toString()+",",
             }
-            this.http.post('http://127.0.0.1:8000/sorted-posts-img/', postdata_img ).subscribe( (data:any = [{}]) => {  
+            this.http.post('http://127.0.0.1:8000/sorted-posts-img/', postdata_img1 ).subscribe( (data:any = [{}]) => {  
               this.trending_projects = data;
               console.log(this.trending_projects);
             })
@@ -120,6 +120,18 @@ export class MemberHomePage {
 
   ionViewWillEnter(){
     this.searchToggle = false;
+    this.sortedData = [];
+    this.post_img = '';
+    this.post_admin_img = '';
+    this.image_dict = {};
+    this.dp_image_dict = {};
+    this.liked_post = [];
+    this.saved_post = [];
+    this.instrested_people = [];
+    this.instrested_member_img ='';
+    this.instrested_people_img_dict = {};
+    this.trending_projects = [];
+    this.ngOnInit();
   }
 
   like(post_id, title_of_post) {
@@ -146,6 +158,8 @@ export class MemberHomePage {
       }
     });
   }
+
+
 
   dislike(post_id) {    
     var postdata = {

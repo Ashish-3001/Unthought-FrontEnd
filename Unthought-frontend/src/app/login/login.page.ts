@@ -33,6 +33,7 @@ export class LoginPage implements OnInit {
         this.presentAlertError();
       }
     }, (error) => {
+      console.log(error);
       this.presentAlertError();
     });
     form.resetForm(); 
@@ -40,7 +41,7 @@ export class LoginPage implements OnInit {
   
   async presentAlertError() {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
+      cssClass: 'alert',
       header: 'Try Again',
       message: 'Something went wrong. Please <strong>Try Again</strong> with correct Username and Password!!!',
       buttons: [

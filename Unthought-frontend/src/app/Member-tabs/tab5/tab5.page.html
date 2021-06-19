@@ -28,7 +28,7 @@
       </ion-row>
     </div>
 
-    <div *ngIf = "this.user_data != undefined && this.own_profile == false">
+    <div *ngIf = "this.user_data != undefined && this.own_profile == false && this.own_data[0].id != this.member_id">
       <ion-row>
         <ion-col>
           <ion-button expand="block" color="danger" (click)="startChat()">

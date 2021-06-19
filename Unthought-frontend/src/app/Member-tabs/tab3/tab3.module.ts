@@ -6,7 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { MemberPostPage } from './tab3.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
-import { MemberPostPageRoutingModule } from './tab3-routing.module'
+import { MemberPostPageRoutingModule } from './tab3-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
   imports: [
@@ -16,6 +18,7 @@ import { MemberPostPageRoutingModule } from './tab3-routing.module'
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: MemberPostPage }]),
     MemberPostPageRoutingModule,
+    SharedModule,
   ],
   declarations: [MemberPostPage]
 })

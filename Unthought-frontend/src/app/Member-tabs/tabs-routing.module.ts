@@ -60,7 +60,7 @@ const routes: Routes = [
         loadChildren: () => import('./tab5/tab5.module').then( m => m.MemberProfilePageModule)
       },
       {
-        path: 'profile/saved/:member_id',
+        path: 'pro/saved/:member_id',
         loadChildren: () => import('./tab5/saved/saved.module').then( m => m.SavedPageModule)
       },
       {

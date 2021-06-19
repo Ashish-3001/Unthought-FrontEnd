@@ -1,3 +1,19 @@
+.tab-bar {
+  --background: black;
+  --border-color: white;
+}
+
+.heading{
+  text-align: center;
+  color: red;
+  font-size: 30px;
+  font-style: initial;  
+}
+
+.notifications-icon{
+  color: red;
+}
+
 .ion-slides {
     height: 100%;
 } 
@@ -37,4 +53,34 @@
     font-weight: 200;
 }
   
-  
+.form_name {
+  margin-top: 10px;
+}
+
+.heading_slides {
+  margin-top: 40px;
+  margin-left: 10px;
+  color: red;
+  text-align: left;
+}
+
+.heading2 {
+  color: red;
+  text-align: center;
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.requriment_chips {
+  background: white;
+}
+ 
+.image_div {
+  background: white;
+}
+
+.add_pic_button {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}

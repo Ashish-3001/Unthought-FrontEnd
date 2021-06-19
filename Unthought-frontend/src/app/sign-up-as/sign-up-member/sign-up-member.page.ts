@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -16,7 +17,7 @@ export class SignUpMemberPage implements OnInit {
   form: FormGroup;
   slide_no: number = 1;
 
-  new_user:any;
+  new_user:object = {};
   new_member: object = {};
 
   primary_toggle: boolean = false;
@@ -30,6 +31,7 @@ export class SignUpMemberPage implements OnInit {
   secoundary_sub_toggle:  boolean = false;
 
   constructor(
+    private http: HttpClient,
     public alertController: AlertController,
     private router: Router,) { }
 
@@ -37,7 +39,30 @@ export class SignUpMemberPage implements OnInit {
   }
 
   Slide1_submit(form: NgForm) {
-    this.new_user["user_name"] = form.value
+    this.new_user["user_name"] = form.value.Uname;
+    this.new_user["password"] = form.value.password;
+    this.new_member["phone_number"] = form.value.phonenumber;
+    var postdata = {
+      'phone': form.value.phonenumber.toString(),
+      'user_name': form.value.Uname,
+      'password': form.value.password,
+    }
+    this.http.post('http://127.0.0.1:8000/validate-otp/', postdata).subscribe( (data:any) => {
+      if(data.status == true){
+
+      }
+      else {
+        if (data.detail == "User name is already present"){
+
+        }
+        else if (data.detail ==  "phone number is already present"){
+
+        }
+        else {
+          
+        }
+      }
+    });
   }
 
   ionViewWillEnter() {

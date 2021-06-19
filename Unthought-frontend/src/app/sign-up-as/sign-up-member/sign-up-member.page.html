@@ -44,9 +44,9 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">Password*</ion-label>
-                  <ion-input type = 'text' ngModel name ="Uname" required #UnameCtrl="ngModel"></ion-input>
+                  <ion-input type = 'text' ngModel name ="password" required #passwordCtrl="ngModel"></ion-input>
                 </ion-item>
-                <ion-item *ngIf="!UnameCtrl.valid && UnameCtrl.touched" lines="none">
+                <ion-item *ngIf="!passwordCtrl.valid && passwordCtrl.touched" lines="none">
                   <div class="warn"> Please Enter Your Password. Password can have upper-case, lower-case and special characters !</div>
                 </ion-item>
               </div>

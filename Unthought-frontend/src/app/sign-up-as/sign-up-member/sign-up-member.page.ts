@@ -37,7 +37,14 @@ export class SignUpMemberPage implements OnInit {
   }
 
   Slide1_submit(form: NgForm) {
-    this.new_user["user_name"] = form.value
+    this.new_user["user_name"] = form.value.Uname;
+    this.new_user["password"] = form.value.password;
+    this.new_member["phone_number"] = form.value.phonenumber;
+    var postdata = {
+      'phone': form.value.phonenumber,
+      'user_name': form.value.Uname,
+      'password': form.value.password,
+    }
   }
 
   ionViewWillEnter() {

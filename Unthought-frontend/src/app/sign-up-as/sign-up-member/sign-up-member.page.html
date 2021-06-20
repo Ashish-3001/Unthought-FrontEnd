@@ -69,7 +69,7 @@
       <div>
         <ion-row>
           <ion-col>
-            <ion-button expand="block" color="success" (click)="this.slide_no = 2"><!-- type="submit" [disabled]="!form.valid" -->
+            <ion-button expand="block" color="success"  type="submit" [disabled]="!form.valid" ><!-- (click)="this.slide_no = 2" -->
               Next
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </ion-button>
@@ -207,6 +207,20 @@
             </ion-col>
           </ion-row>
 
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div padding>
+                <ion-item>
+                  <ion-label position="floating"> Give Your Description in 800 characters*</ion-label>
+                  <ion-textarea type = 'text' ngModel name ="dec" required #decCtrl="ngModel"></ion-textarea>
+                </ion-item>
+                <ion-item *ngIf="!decCtrl.valid && decCtrl.touched" lines="none">
+                  <div class="warn"> Please Enter </div>
+                </ion-item>                                 
+              </div>
+            </ion-col>
+          </ion-row>
+
         </ion-grid> 
       </div>
     
@@ -219,7 +233,7 @@
             </ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button expand="block" color="success" (click)="this.slide_no = 3" ><!-- type="submit" [disabled]="!form2.valid" -->
+            <ion-button expand="block" color="success" type="submit" [disabled]="!form2.valid"  ><!-- (click)="this.slide_no = 3" -->
               Next
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </ion-button>
@@ -231,11 +245,6 @@
   </div>
     
   <div *ngIf="this.slide_no == 3">
-
-    <div class="heading_slides">
-      <h3> Add Your Domaims</h3>
-      <h4> These are the Domains in which you have sills<br> All 4 requirments are compulsury.<br>You can repeat the same requirment.</h4>
-    </div>
 
     <ion-grid>
       <ion-row>
@@ -350,16 +359,53 @@
     
   <div *ngIf="this.slide_no == 4">
 
-    <h2>slide 3</h2>
+    
+    <div class="heading_slides">
+      <h3> Add Picture</h3>
+      <h4> Picture is compulsury which will as act your DP.</h4>
+    </div>
 
     <div>
       <ion-grid>
-        <ion-row color="primary" justify-content-center>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            iendvjcn
+
+        <ion-row>
+          <ion-col>
+            <ion-button *ngIf='!this.imageStringDp' expand="block" color="light" (click)="this.imageStringDp_toggle = !this.imageStringDp_toggle" class="add_pic_button">
+              Add Your DP
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+            <ion-button *ngIf='this.imageStringDp' expand="block" color="light" (click)="this.imageStringDp_toggle = false" (click)="this.imageStringDp = undefined" class="add_pic_button">
+              Change Your DP
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+            <ion-row class="image_div" *ngIf="this.imageStringDp_toggle == true" >
+              <ion-col size-md="6" offset-md="3">
+                <div *ngIf="this.imageStringDp_toggle == true">
+                  <app-image-picker (imagePick)="onImagePickedDp($event)"  ></app-image-picker>
+                </div>
+              </ion-col>
+            </ion-row>
           </ion-col>
-          </ion-row>
+        </ion-row>
+
       </ion-grid>        
+    </div>
+
+    <div>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" color="danger" (click)="back(3)">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            Back
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="success" [disabled]="!this.imageStringDp" (click)="this.presentAlertDone()">
+            Submit
+            <ion-icon name="checkmark-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </div>
 
   </div> 

@@ -14,7 +14,6 @@ export class PostEditPage implements OnInit {
   form: FormGroup;
   slide_no: number = 1;
   curent_data: object = {};
-
   user_data:any;
   new_post: object = {};
 

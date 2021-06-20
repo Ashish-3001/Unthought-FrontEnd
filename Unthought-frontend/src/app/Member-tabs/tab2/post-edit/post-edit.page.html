@@ -31,7 +31,7 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">Title Of Project*</ion-label>
-                  <ion-input type = 'text' ngModel name ="posttitle" [(ngModule)] = 'title_of_post' required #posttitleCtrl="ngModel"></ion-input>
+                  <ion-input type = 'text' ngModel name ="posttitle" value = '{{this.curent_data.title_of_post}}' required #posttitleCtrl="ngModel"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="!posttitleCtrl.valid && posttitleCtrl.touched" lines="none">
                   <div class="warn"> Please Enter Your Project Title</div>
@@ -44,7 +44,7 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">Short Description Of Project (within 50 charaters)*</ion-label>
-                  <ion-input type = 'text' ngModel name ="shortdec" [(ngModule)] = 'short_desc' required #shortdecCtrl="ngModel"></ion-input>
+                  <ion-input type = 'text' ngModel name ="shortdec" [(ngModule)] = 'this.curent_data.short_desc' required #shortdecCtrl="ngModel"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="!shortdecCtrl.valid && shortdecCtrl.touched" lines="none">
                   <div class="warn"> Please Enter Short Description Of Project</div>

@@ -130,14 +130,14 @@ export class MemberPostPage {
     await alert.present();
   }
 
-  onImagePickedDp(imageData:string) {
-    if(typeof imageData === 'string') {
-      this.imageStringDp = imageData;
-     }
-     else {
-       console.log("error in reciving the string");
-     }
-  }
+    onImagePickedDp(imageData:string) {
+      if(typeof imageData === 'string') {
+        this.imageStringDp = imageData;
+      }
+      else {
+        console.log("error in reciving the string");
+      }
+    }
 
   onImagePicked1(imageData:string) {
     if(typeof imageData === 'string') {

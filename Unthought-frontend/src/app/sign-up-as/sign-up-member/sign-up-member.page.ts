@@ -33,6 +33,10 @@ export class SignUpMemberPage implements OnInit {
   sec_specification_sub: any;
   secoundary_sub_toggle:  boolean = false;
 
+  
+  imageStringDp: string = undefined;
+  imageStringDp_toggle: boolean = false;
+
   constructor(
     private http: HttpClient,
     public alertController: AlertController,
@@ -58,6 +62,7 @@ export class SignUpMemberPage implements OnInit {
         this.new_user["user_type"] = "member";
         this.new_member["phone_number"] = form.value.phonenumber;
         this.new_member["user_name"] = form.value.Uname;
+        this.new_member["unique_name"] = form.value.Uname;
 
         var otp =data.otp.toString();
         this.auth.otp_verification.next(otp);
@@ -95,6 +100,7 @@ export class SignUpMemberPage implements OnInit {
     this.new_member["gender"] = form2.value.gender
     this.new_member["dob"] = form2.value.dob
     this.new_member["email"] = form2.value.email
+    this.new_member["desc"] = form2.value.dec
 
     if (this.working_status == 'true') {
       this.new_member["working_status"] = true
@@ -120,12 +126,52 @@ export class SignUpMemberPage implements OnInit {
     this.slide_no = 4;
   }
 
-  ionViewWillEnter() {
+  
+  onSubmit() {
 
+    var postimage = new FormData(document.forms[0]);
+
+    this.http.post('http://127.0.0.1:8000/User/',this.new_user).subscribe((data:any) => {
+      console.log(data);
+      this.new_member["User_id"] = data.id;
+
+      this.http.post('http://127.0.0.1:8000/Member/', this.new_member).subscribe((data2:any) => {
+        postimage.append("member_id", data2.id.toString());
+        var file1 =  this.auth.onImagePicked(this.imageStringDp);
+        postimage.append("member_dp", file1 ,'name:image.jpeg');
+
+        this.http.post('http://127.0.0.1:8000/MemberDp/', postimage).subscribe((data3) => {
+          console.log(data3);
+          this.auth.login('member',data2.user_id)
+        },(error) => {
+          console.log(error);
+          this.presentAlertSorry();
+        });
+      },(error) => {
+        console.log(error);
+        this.presentAlertSorry();
+      });
+    },(error) => {
+      console.log(error);
+      this.presentAlertSorry();
+    });
+    
   }
 
-  onSubmit(form: NgForm) {
-    
+  ionViewWillEnter() {
+    this.slide_no = 1;
+    this.pri_specification_main = undefined;
+    this.pri_specification_sub = undefined;
+    this.sec_specification_main = undefined;
+    this.sec_specification_sub = undefined;
+    this.primary_toggle = false;
+    this.primary_sub_toggle = false;
+    this.secoundary_toggle = false;
+    this.secoundary_sub_toggle = false;
+    this.working_status = undefined;
+    this.new_member = {};
+    this.new_user = {};
+
   }
 
   primarySelcted(type) {
@@ -154,6 +200,28 @@ export class SignUpMemberPage implements OnInit {
     this.presentAlertBack(num);
   }
 
+
+  async presentAlertDone() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Confirmation',
+      message: '<strong>I agree to the trems and conditions of this app and would like to be a part of it.</strong> ??',
+      buttons: [
+        {
+          text: 'cancel',
+          role: 'cancel',
+          cssClass: 'alert-button',
+        },
+        {
+        text: 'Agree',
+        handler: () => {
+          this.onSubmit();
+        }
+      }]
+    });
+
+    await alert.present();
+  }
 
   async presentAlertBack(num) {
     const alert = await this.alertController.create({
@@ -215,8 +283,23 @@ export class SignUpMemberPage implements OnInit {
     await alert.present();
   }
 
+  
+
   async presentAlertSorry() {
     
+    this.slide_no = 1;
+    this.pri_specification_main = undefined;
+    this.pri_specification_sub = undefined;
+    this.sec_specification_main = undefined;
+    this.sec_specification_sub = undefined;
+    this.primary_toggle = false;
+    this.primary_sub_toggle = false;
+    this.secoundary_toggle = false;
+    this.secoundary_sub_toggle = false;
+    this.working_status = undefined;
+    this.new_member = {};
+    this.new_user = {};
+
     const alert = await this.alertController.create({
       cssClass: 'my-custom',
       header: 'Sorry !!',
@@ -231,5 +314,14 @@ export class SignUpMemberPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  onImagePickedDp(imageData:string) {
+    if(typeof imageData === 'string') {
+      this.imageStringDp = imageData;
+     }
+     else {
+       console.log("error in reciving the string");
+     }
   }
 }

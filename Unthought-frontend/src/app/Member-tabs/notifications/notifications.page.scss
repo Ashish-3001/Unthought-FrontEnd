@@ -5,19 +5,19 @@
 
 .heading{
     text-align: center;
-    color: red;
+    color: #ff4848;
     font-size: 30px;
     font-style: initial;  
 }
 
 .chip {
-    --background: red;
+    --background: #ff4848;
     --color: white;
 }
 
 .chip-active {
     --background: white;
-    --color: red;
+    --color: #ff4848;
 }
 
 .which_project {
@@ -85,7 +85,7 @@
 .like-save-saerch {
     padding-top: 10px;
     padding-left: 10px;
-    color: red;
+    color: #ff4848;
 }
 
 .bottom {

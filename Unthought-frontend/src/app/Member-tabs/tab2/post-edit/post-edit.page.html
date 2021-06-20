@@ -44,7 +44,7 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">Short Description Of Project (within 50 charaters)*</ion-label>
-                  <ion-input type = 'text' ngModel name ="shortdec" [(ngModule)] = 'this.curent_data.short_desc' required #shortdecCtrl="ngModel"></ion-input>
+                  <ion-input type = 'text' ngModel name ="shortdec" value = '{{this.curent_data.short_desc}}' required #shortdecCtrl="ngModel"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="!shortdecCtrl.valid && shortdecCtrl.touched" lines="none">
                   <div class="warn"> Please Enter Short Description Of Project</div>
@@ -57,7 +57,7 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">Long Description Of Post*</ion-label>
-                  <ion-textarea type = 'text' ngModel name ="longdec" [(ngModule)] = 'long_desc' required #longdecCtrl="ngModel"></ion-textarea>
+                  <ion-textarea type = 'text' ngModel name ="longdec" value = '{{this.curent_data.long_desc}}' required #longdecCtrl="ngModel"></ion-textarea>
                 </ion-item>
                 <ion-item *ngIf="!longdecCtrl.valid && longdecCtrl.touched" lines="none">
                   <div class="warn"> Please Enter Long Description Of Project</div>
@@ -70,7 +70,7 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">Goal Of The Project*</ion-label>
-                  <ion-input type = 'text' ngModel name ="projgoal" [(ngModule)] = 'goal_of_project' required #projgoalCtrl="ngModel"></ion-input>
+                  <ion-input type = 'text' ngModel name ="projgoal" value = '{{this.curent_data.goal_of_project}}' required #projgoalCtrl="ngModel"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="!projgoalCtrl.valid && projgoalCtrl.touched" lines="none">
                   <div class="warn"> Please Enter the Goal Of Project</div>
@@ -83,7 +83,7 @@
               <div padding>
                 <ion-item>
                   <ion-label position="floating">WorkDone For this Project*</ion-label>
-                  <ion-input type = 'text' ngModel name ="projwork" [(ngModule)] = 'workdone' required #projworkCtrl="ngModel"></ion-input>
+                  <ion-input type = 'text' ngModel name ="projwork" value = '{{this.curent_data.workdone}}' required #projworkCtrl="ngModel"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="!projworkCtrl.valid && projworkCtrl.touched" lines="none">
                   <div class="warn"> Please Enter the work done done for this Project till now</div>

@@ -126,127 +126,86 @@
                 <div class="pry" *ngIf="this.selected">{{ this.selected }}</div>
               </ion-card>
               <div class="requriment_chips" *ngIf="this.primary_toggle == true">
-                <ion-chip class="primary2_select" (click)="primarySelcted('web development')"> Web Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('app development')"> App Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('arvr program')"> Ar/Vr Program</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('ethical hacking')"> Ethical Hacking</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('game designer')"> Game Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('ml engineer')"> M.L Engineer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('software developer')"> Software Developer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('cyber security')"> Cyber Security</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted('digital marketing')"> Digitial Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('affiliate marketing')"> Affiliate Marketing</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted('content marketing')"> Content Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('network marketing')"> Network Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('social marketing')"> SOCIAL MARKETING</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('graphic designer')"> Graphic Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('ux/ui designer')"> Ux/Ui Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('animator')"> Animator</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('fasion designer')"> Fasion Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('network and social media marketing')"> Network And Social Media Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('web and app development')"> Web and App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('machine learning and artificial intelligence')"> Machine Learning and Artificial Intelligence</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('cyber security and ethical hacking')"> Cyber Security And Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('ar/vr and game development')"> AR/VR and Game Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('graphic and ux/ui designer')"> Graphic and UX/UI Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('product Design and animation')"> Product Design and Animation</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('fashion designer')"> Fashion Designer</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted('interior designer')"> Interior Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('photographer')"> Photographer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('product designer')"> Product Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('sound designer')"> Sound Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('legal')"> Legal</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('finance')"> Finance</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted('general')"> General</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('illustrator and photographer')"> Illustrator and Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted('legal(advocate)')"> Legal(Advocate)</ion-chip>
               </div>
              
               <ion-card class="primary_select" (click)="this.primary2_toggle = !this.primary2_toggle">
                 <div class="pry" *ngIf="this.selected2 == undefined">REQURIMENT 2*</div>
                 <div class="pry" *ngIf="this.selected2">{{ this.selected2 }}</div>
               </ion-card>
-              <div class="requriment_chips" *ngIf="this.primary2_toggle == true">
-                <ion-chip class="primary2_select" (click)="primarySelcted2('web development')"> Web Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('app development')"> App Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('arvr program')"> Ar/Vr Program</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('ethical hacking')"> Ethical Hacking</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('game designer')"> Game Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('ml engineer')"> M.L Engineer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('software developer')"> Software Developer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('cyber security')"> Cyber Security</ion-chip>
+              <div class="requriment_chips" *ngIf="this.primary2_toggle == true && this.selected == undefined">Please Select your Requirment 1</div>
+              <div class="requriment_chips" *ngIf="this.primary2_toggle == true && this.selected != undefined">
                 <ion-chip class="primary2_select" (click)="primarySelcted2('digital marketing')"> Digitial Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('affiliate marketing')"> Affiliate Marketing</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted2('content marketing')"> Content Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('network marketing')"> Network Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('social marketing')"> SOCIAL MARKETING</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('graphic designer')"> Graphic Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('ux/ui designer')"> Ux/Ui Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('animator')"> Animator</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('fasion designer')"> Fasion Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('network and social media marketing')"> Network And Social Media Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('web and app development')"> Web and App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('machine learning and artificial intelligence')"> Machine Learning and Artificial Intelligence</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('cyber security and ethical hacking')"> Cyber Security And Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('ar/vr and game development')"> AR/VR and Game Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('graphic and ux/ui designer')"> Graphic and UX/UI Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('product Design and animation')"> Product Design and Animation</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('fashion designer')"> Fashion Designer</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted2('interior designer')"> Interior Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('photographer')"> Photographer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('product designer')"> Product Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('sound designer')"> Sound Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('legal')"> Legal</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('finance')"> Finance</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted2('general')"> General</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('illustrator and photographer')"> Illustrator and Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted2('legal(advocate)')"> Legal(Advocate)</ion-chip>
               </div>
 
               <ion-card class="primary_select" (click)="this.primary3_toggle = !this.primary3_toggle">
                 <div class="pry" *ngIf="this.selected3 == undefined">REQURIMENT 3*</div>
                 <div class="pry" *ngIf="this.selected3">{{ this.selected3 }}</div>
               </ion-card>
-              <div class="requriment_chips" *ngIf="this.primary3_toggle == true">
-                <ion-chip class="primary2_select" (click)="primarySelcted3('web development')"> Web Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('app development')"> App Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('arvr program')"> Ar/Vr Program</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('ethical hacking')"> Ethical Hacking</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('game designer')"> Game Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('ml engineer')"> M.L Engineer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('software developer')"> Software Developer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('cyber security')"> Cyber Security</ion-chip>
+              <div class="requriment_chips" *ngIf="this.primary3_toggle == true && this.selected == undefined && this.selected2 == undefined">Please Select Your Requriment 1 and Requriment 2</div>
+              <div class="requriment_chips" *ngIf="this.primary3_toggle == true && this.selected != undefined && this.selected2 != undefined">
                 <ion-chip class="primary2_select" (click)="primarySelcted3('digital marketing')"> Digitial Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('affiliate marketing')"> Affiliate Marketing</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted3('content marketing')"> Content Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('network marketing')"> Network Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('social marketing')"> SOCIAL MARKETING</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('graphic designer')"> Graphic Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('ux/ui designer')"> Ux/Ui Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('animator')"> Animator</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('fasion designer')"> Fasion Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('network and social media marketing')"> Network And Social Media Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('web and app development')"> Web and App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('machine learning and artificial intelligence')"> Machine Learning and Artificial Intelligence</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('cyber security and ethical hacking')"> Cyber Security And Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('ar/vr and game development')"> AR/VR and Game Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('graphic and ux/ui designer')"> Graphic and UX/UI Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('product Design and animation')"> Product Design and Animation</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('fashion designer')"> Fashion Designer</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted3('interior designer')"> Interior Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('photographer')"> Photographer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('product designer')"> Product Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('sound designer')"> Sound Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('legal')"> Legal</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('finance')"> Finance</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted3('general')"> General</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('illustrator and photographer')"> Illustrator and Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted3('legal(advocate)')"> Legal(Advocate)</ion-chip>
               </div>
               
               <ion-card class="primary_select" (click)="this.primary4_toggle = !this.primary4_toggle">
                 <div class="pry" *ngIf="this.selected4 == undefined">REQURIMENT 4*</div>
                 <div class="pry" *ngIf="this.selected4">{{ this.selected4 }}</div>
               </ion-card>
-              <div class="requriment_chips" *ngIf="this.primary4_toggle == true">
-                <ion-chip class="primary2_select" (click)="primarySelcted4('web development')"> Web Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('app development')"> App Development</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('arvr program')"> Ar/Vr Program</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('ethical hacking')"> Ethical Hacking</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('game designer')"> Game Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('ml engineer')"> M.L Engineer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('software developer')"> Software Developer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('cyber security')"> Cyber Security</ion-chip>
+              <div class="requriment_chips" *ngIf="this.primary4_toggle == true && this.selected == undefined && this.selected2 == undefined && this.selected3 == undefined">Please Select Your Requriment 1,Requriment 2 and Requriment 3</div>
+              <div class="requriment_chips" *ngIf="this.primary4_toggle == true && this.selected != undefined && this.selected2 != undefined && this.selected3 != undefined">
                 <ion-chip class="primary2_select" (click)="primarySelcted4('digital marketing')"> Digitial Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('direct marketing')"> Direct Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('affiliate marketing')"> Affiliate Marketing</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted4('content marketing')"> Content Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('network marketing')"> Network Marketing</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('social marketing')"> SOCIAL MARKETING</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('graphic designer')"> Graphic Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('ux/ui designer')"> Ux/Ui Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('animator')"> Animator</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('fasion designer')"> Fasion Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('illustrator')"> Illustrator</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('network and social media marketing')"> Network And Social Media Marketing</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('web and app development')"> Web and App Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('machine learning and artificial intelligence')"> Machine Learning and Artificial Intelligence</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('cyber security and ethical hacking')"> Cyber Security And Ethical Hacking</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('ar/vr and game development')"> AR/VR and Game Development</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('graphic and ux/ui designer')"> Graphic and UX/UI Designer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('product Design and animation')"> Product Design and Animation</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('fashion designer')"> Fashion Designer</ion-chip>
                 <ion-chip class="primary2_select" (click)="primarySelcted4('interior designer')"> Interior Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('photographer')"> Photographer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('product designer')"> Product Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('sound designer')"> Sound Designer</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('legal')"> Legal</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('finance')"> Finance</ion-chip>
-                <ion-chip class="primary2_select" (click)="primarySelcted4('general')"> General</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('illustrator and photographer')"> Illustrator and Photographer</ion-chip>
+                <ion-chip class="primary2_select" (click)="primarySelcted4('legal(advocate)')"> Legal(Advocate)</ion-chip>
               </div>
             
             </ion-col>

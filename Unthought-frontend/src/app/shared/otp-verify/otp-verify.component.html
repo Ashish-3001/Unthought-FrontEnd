@@ -1,0 +1,32 @@
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="verify(form)">
+    
+    <ion-grid>
+      
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-text color="secondary" >
+            <div class="heading">Unthought</div>
+          </ion-text>
+            <ion-text color="primary" >
+            <div class="head">From Dream to Reality</div>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>                
+              <ion-input placeholder="Enter Your OTP" type = 'text' inputmode="numeric" minlength="4" maxlength="4"required ngModel name = "otp" #otpCtrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!otpCtrl.valid && otpCtrl.touched" lines="none">
+              <div class="warn">Enter the valid OTP</div>
+            </ion-item>                 
+            <ion-button color="success"  [disabled]="!form.valid" fill="outline" expand="block" type=submit size='default'[routerLink]="[verify]" >Verify<ion-icon name="checkmark-circle-sharp" color="success"></ion-icon></ion-button>
+            <ion-button color="warning" (click)="presentAlertResendOTP()">Resend otp</ion-button>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </form>  
+</ion-content>
+

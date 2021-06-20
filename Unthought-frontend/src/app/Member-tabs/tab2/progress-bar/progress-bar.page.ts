@@ -20,7 +20,13 @@ export class ProgressBarPage implements OnInit {
   postMembersDp: object = {};
   post_id:any
   admin: boolean = false;
-  prograss_ing: string = '../assets/img/20_percent.jpg';
+  prograss_ing: string = '../assets/img/20_percent.jpg'; 
+  zero_img: string = '../assets/img/0.svg'; 
+  twenty_img: string = '../assets/img/20.svg'; 
+  fourty_img: string = '../assets/img/40.svg'; 
+  sixty_img: string = '../assets/img/60.svg'; 
+  eighty_img: string = '../assets/img/80.svg'; 
+  hun_img: string = '../assets/img/100.svg';
 
 
   constructor(

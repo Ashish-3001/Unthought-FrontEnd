@@ -34,9 +34,10 @@
 
 .welcome{
     margin-top: 80px;
-    margin-left: 20px;    
+    margin-left: 20px;
+    margin-bottom: 50px; 
     text-align: center;
-    color: red;
+    color: white;
     font-size: 30px;
     font-style: initial;
 }
@@ -44,4 +45,43 @@
     margin-top: 150px;
     margin-left: 20px;
     font-style: italic;
+}
+.desc{
+    font-size: 20px;
+    margin-bottom: 2%;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-style: italic;
+}
+.desc2{
+    margin-top: 33px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-style: italic;    
+}
+.desc3{
+    margin-top: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-style: italic;    
+}
+
+.dp_img {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    height: 200px;
+    width: 100%;
+    border-width: 10px;
+    border-color: white;
+}
+.arrow_img{
+    margin-left: 70%;
+    margin-top: 100px;
+    padding-left: 30px;
+    height: 30px;
+}
+.silde_img{
+    margin-top: 55px;
+    margin-bottom: 122px;
+    height: 160px;
 }

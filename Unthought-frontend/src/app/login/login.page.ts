@@ -11,6 +11,10 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  
+  dp_img: string = '../assets/img/11.png';
+  arrow_img: string = '../assets/img/right-arrow.png'; 
+  slide2_img: string = '../assets/img/slide3.jpg';
 
   constructor(private http: HttpClient, 
     public alertController: AlertController,

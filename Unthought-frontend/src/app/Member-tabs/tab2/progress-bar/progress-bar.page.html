@@ -11,7 +11,12 @@
 <ion-content [fullscreen]="true">
   <ion-row>
     <ion-col>
-
+      <ion-img *ngIf="this.postDetails.progress_status == 0" [src]="this.zero_img" class="pro_img"></ion-img>
+      <ion-img *ngIf="this.postDetails.progress_status == 1" [src]="this.twenty_img" class="pro_img"></ion-img>
+      <ion-img *ngIf="this.postDetails.progress_status == 2" [src]="this.fourty_img" class="pro_img"></ion-img>
+      <ion-img *ngIf="this.postDetails.progress_status == 3" [src]="this.sixty_img" class="pro_img"></ion-img>
+      <ion-img *ngIf="this.postDetails.progress_status == 4" [src]="this.eighty_img" class="pro_img"></ion-img>
+      <ion-img *ngIf="this.postDetails.progress_status == 5" [src]="this.hun_img" class="pro_img"></ion-img>
       <ion-img [src]="this.prograss_ing" class="pro_img"></ion-img>
 
       <div>

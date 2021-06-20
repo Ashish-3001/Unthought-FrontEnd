@@ -254,35 +254,33 @@
           <div class="requriment_chips" *ngIf="this.primary_toggle == true">
             <ion-chip class="primary2_select" (click)="primarySelcted('software development')"> Software Development</ion-chip> <br>
             <div class="requriment_chips" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'software development' ">
-              <ion-chip (click)="primarysubSelcted('web development')"> Web Development</ion-chip>
-              <ion-chip (click)="primarysubSelcted('app development')"> App Development</ion-chip>
-              <ion-chip (click)="primarysubSelcted('arvr program')"> Ar/Vr Program</ion-chip>
-              <ion-chip (click)="primarysubSelcted('ethical hacking')"> Ethical Hacking</ion-chip>
-              <ion-chip (click)="primarysubSelcted('game designer')"> Game Designer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('ml engineer')"> M.L Engineer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('software developer')"> Software Developer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('cyber security')"> Cyber Security</ion-chip>
+              <ion-chip (click)="primarysubSelcted('web and app development')"> Web And App Development</ion-chip>
+              <ion-chip (click)="primarysubSelcted('machine learning and artificial intelligence')"> Machine Learning And Artificial Intelligence</ion-chip>
+              <ion-chip (click)="primarysubSelcted('cyber security and ethical hacking')"> Cyber Security and Ethical Hacking</ion-chip>
+              <ion-chip (click)="primarysubSelcted('ar/vr and game development')"> AR/VR and Game Development</ion-chip>
             </div>
             <ion-chip class="primary2_select" (click)="primarySelcted('marketing')"> Marketing</ion-chip> <br>
             <div class="requriment_chips" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'marketing' ">
               <ion-chip (click)="primarysubSelcted('digital marketing')"> Digitial Marketing</ion-chip>
-              <ion-chip (click)="primarysubSelcted('direct marketing')"> Direct Marketing</ion-chip>
+              <ion-chip (click)="primarysubSelcted('affiliate marketing')"> Affiliate Marketing</ion-chip>
               <ion-chip (click)="primarysubSelcted('content marketing')"> Content Marketing</ion-chip>
-              <ion-chip (click)="primarysubSelcted('network marketing')"> Network Marketing</ion-chip>
-              <ion-chip (click)="primarysubSelcted('social marketing')"> SOCIAL MARKETING</ion-chip>
+              <ion-chip (click)="primarysubSelcted('network and social marketing')"> Network And Social Marketing</ion-chip>
             </div>
             
             <ion-chip class="primary2_select" (click)="primarySelcted('designing')"> Designing</ion-chip> <br>
             <div class="requriment_chips" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'designing' ">
-              <ion-chip (click)="primarysubSelcted('graphic designer')"> Graphic Designer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('ux/ui designer')"> Ux/Ui Designer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('animator')"> Animator</ion-chip>
+              <ion-chip (click)="primarysubSelcted('graphic and ux/ui designer')"> Graphic and UX/UI Designer</ion-chip>
+              <ion-chip (click)="primarysubSelcted('product design and animation')"> Product Design And Animation</ion-chip>
               <ion-chip (click)="primarysubSelcted('fasion designer')"> Fasion Designer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('illustrator')"> Illustrator</ion-chip>
               <ion-chip (click)="primarysubSelcted('interior designer')"> Interior Designer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('photographer')"> Photographer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('product designer')"> Product Designer</ion-chip>
-              <ion-chip (click)="primarysubSelcted('sound designer')"> Sound Designer</ion-chip>
+              <ion-chip (click)="primarysubSelcted('illustrator and photographer')"> Illustrator And Photographer</ion-chip>
+            </div>
+            <ion-chip class="primary2_select" (click)="primarySelcted('other')"> Other</ion-chip> <br>
+            <div class="requriment_chips" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'other' ">
+              <ion-chip (click)="primarysubSelcted('legal(advocate)')"> legal(Advocate)</ion-chip>
+              <ion-chip (click)="primarysubSelcted('sales')"> Sales</ion-chip>
+              <ion-chip (click)="primarysubSelcted('event management and planner')"> Event Management And Planner</ion-chip>
+              <ion-chip (click)="primarysubSelcted('influencer')"> Influencer</ion-chip>
             </div>
           </div>
           
@@ -294,34 +292,32 @@
           <div class="requriment_chips" *ngIf="this.secoundary_toggle == true && this.pri_specification_main !== undefined && this.pri_specification_sub !== undefined">
             <ion-chip class="secoundary2_select" (click)="secoundarySelcted('software development')"> Software Development</ion-chip> <br>
             <div class="requriment_chips" *ngIf="secoundary_sub_toggle == true && this.sec_specification_main == 'software development' ">
-              <ion-chip (click)="secoundarysubSelcted('web development')"> Web Development</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('app development')"> App Development</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('arvr program')"> Ar/Vr Program</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('ethical hacking')"> Ethical Hacking</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('game designer')"> Game Designer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('ml engineer')"> M.L Engineer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('software developer')"> Software Developer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('cyber security')"> Cyber Security</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('web and app development')"> Web And App Development</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('machine learning and artificial intelligence')"> Machine Learning And Artificial Intelligence</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('cyber security and ethical hacking')"> Cyber Security and Ethical Hacking</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('ar/vr and game development')"> AR/VR and Game Development</ion-chip>
             </div>
             <ion-chip class="secoundary2_select" (click)="secoundarySelcted('marketing')"> Marketing</ion-chip> <br>
             <div class="requriment_chips" *ngIf="secoundary_sub_toggle == true && this.sec_specification_main == 'marketing' ">
               <ion-chip (click)="secoundarysubSelcted('digital marketing')"> Digitial Marketing</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('direct marketing')"> Direct Marketing</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('affiliate marketing')"> Affiliate Marketing</ion-chip>
               <ion-chip (click)="secoundarysubSelcted('content marketing')"> Content Marketing</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('network marketing')"> Network Marketing</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('social marketing')"> SOCIAL MARKETING</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('network and social marketing')"> Network And Social Marketing</ion-chip>
             </div>
             <ion-chip class="secoundary2_select" (click)="secoundarySelcted('designing')"> Designing</ion-chip> <br>
             <div class="requriment_chips" *ngIf="secoundary_sub_toggle == true && this.sec_specification_main == 'designing' ">
-              <ion-chip (click)="secoundarysubSelcted('graphic designer')"> Graphic Designer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('ux/ui designer')"> Ux/Ui Designer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('animator')"> Animator</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('graphic and ux/ui designer')"> Graphic and UX/UI Designer</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('product design and animation')"> Product Design And Animation</ion-chip>
               <ion-chip (click)="secoundarysubSelcted('fasion designer')"> Fasion Designer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('illustrator')"> Illustrator</ion-chip>
               <ion-chip (click)="secoundarysubSelcted('interior designer')"> Interior Designer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('photographer')"> Photographer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('product designer')"> Product Designer</ion-chip>
-              <ion-chip (click)="secoundarysubSelcted('sound designer')"> Sound Designer</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('illustrator and photographer')"> Illustrator And Photographer</ion-chip>
+            </div>
+            <ion-chip class="primary2_select" (click)="primarySelcted('other')"> Other</ion-chip> <br>
+            <div class="requriment_chips" *ngIf="primary_sub_toggle == true && this.pri_specification_main == 'other' ">
+              <ion-chip (click)="secoundarysubSelcted('legal(advocate)')"> legal(Advocate)</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('sales')"> Sales</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('event management and planner')"> Event Management And Planner</ion-chip>
+              <ion-chip (click)="secoundarysubSelcted('influencer')"> Influencer</ion-chip>
             </div>
           </div>
 
